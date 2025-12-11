@@ -247,51 +247,49 @@
     
     /* PROMOS SECTION */
     .promos-wrapper {
-      max-width: 1000px;
+      max-width: 900px;
       margin: 1.5rem auto 0;
       padding: 0 2rem;
     }
     .promo-banner-item {
-      background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
-      border-radius: 16px;
-      padding: 2rem 2.5rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 8px 32px rgba(255, 0, 0, 0.4);
+      background: rgba(20, 20, 20, 0.6);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
     }
     .promo-banner-item h3 {
-      font-size: 1.8rem;
-      font-weight: 900;
+      font-size: 1.5rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 1.5rem;
       color: #fff;
+      text-align: center;
     }
     .bonus-options {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
-      margin-top: 1.5rem;
     }
     .bonus-card {
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 12px;
-      padding: 2rem;
-      border: 2px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
       transition: all 0.3s ease;
     }
     .bonus-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255, 255, 255, 0.3);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.6);
     }
     .bonus-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #ffeb3b;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
       margin-bottom: 1rem;
       text-transform: uppercase;
+      letter-spacing: 0.1em;
     }
     .bonus-list {
       list-style: none;
@@ -302,42 +300,50 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.6rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.95rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.9rem;
     }
     .bonus-list li:last-child {
       border-bottom: none;
     }
     .bonus-percent {
-      color: #ffeb3b;
+      color: #ff0000;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
     .bonus-rollover {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.85rem;
+      font-weight: 500;
     }
     .bonus-highlight {
-      background: rgba(0, 0, 0, 0.8);
-      border: 2px solid #00ff88;
-      padding: 2rem;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 0, 0, 0.3);
+      padding: 1.5rem;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .bonus-highlight .bonus-amount {
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 900;
-      color: #00ff88;
+      color: #ff0000;
       margin-bottom: 0.5rem;
     }
     .bonus-highlight .bonus-subtitle {
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: #fff;
-      margin-bottom: 0.5rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
     .bonus-highlight .bonus-note {
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.4;
     }
     
     /* CASINO/GAMES SECTION */
@@ -617,18 +623,37 @@
         padding: 1.5rem 1rem;
       }
       .promo-banner-item h3 {
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
       }
       .bonus-options {
         grid-template-columns: 1fr;
         gap: 1rem;
       }
       .bonus-card {
-        padding: 1.5rem;
+        padding: 1.2rem;
+      }
+      .bonus-title {
+        font-size: 0.75rem;
+      }
+      .bonus-list li {
+        padding: 0.6rem 0;
+        font-size: 0.85rem;
+      }
+      .bonus-percent {
+        font-size: 0.95rem;
+      }
+      .bonus-rollover {
+        font-size: 0.75rem;
       }
       .bonus-highlight .bonus-amount {
-        font-size: 2.5rem;
+        font-size: 2rem;
+      }
+      .bonus-highlight .bonus-subtitle {
+        font-size: 0.9rem;
+      }
+      .bonus-highlight .bonus-note {
+        font-size: 0.8rem;
       }
       .games-gallery {
         grid-template-columns: repeat(2, 1fr);
@@ -782,9 +807,8 @@
           </div>
           <div class="bonus-card bonus-highlight">
             <div class="bonus-amount">10%</div>
-            <div class="bonus-subtitle">CASH BONUS</div>
-            <div class="bonus-note">on every single CRYPTO deposit</div>
-            <div class="bonus-note" style="color: #00ff88; margin-top: 1rem;">+ Any Free Play Bonus</div>
+            <div class="bonus-subtitle">Cash Bonus</div>
+            <div class="bonus-note">On every crypto deposit<br>+ Any Free Play Bonus</div>
           </div>
         </div>
       </div>
