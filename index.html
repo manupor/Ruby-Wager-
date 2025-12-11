@@ -198,7 +198,7 @@
     /* LIGAS - GIRANDO SECTION */
     .ligas-section {
       background: rgba(10,10,10,0.95);
-      padding: 3rem 0;
+      padding: 2rem 0 1.5rem;
       border-bottom: 1px solid rgba(255, 0, 0, 0.1);
       overflow: hidden;
     }
@@ -213,8 +213,8 @@
       overflow: hidden;
       position: relative;
       width: 100%;
-      margin-bottom: 3rem;
-      padding: 1.5rem 0;
+      margin-bottom: 2rem;
+      padding: 1rem 0;
     }
     .leagues-grid {
       display: flex;
@@ -245,50 +245,105 @@
       }
     }
     
-    /* PROMOS GRID */
-    .promos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 2rem auto 0;
+    /* PROMOS SECTION */
+    .promos-wrapper {
+      max-width: 1000px;
+      margin: 1.5rem auto 0;
       padding: 0 2rem;
     }
-    .promo-card {
-      background: linear-gradient(135deg, rgba(30,30,30,0.9) 0%, rgba(0,0,0,0.95) 100%);
-      border-radius: 20px;
-      padding: 2rem;
-      border: 1px solid rgba(255, 0, 0, 0.2);
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-    .promo-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255, 0, 0, 0.5);
-      box-shadow: 0 12px 40px rgba(255, 0, 0, 0.3);
-    }
-    .promo-image {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
+    .promo-banner-item {
+      background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
       margin-bottom: 1.5rem;
+      text-align: center;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(255, 0, 0, 0.4);
     }
-    .promo-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+    .promo-banner-item h3 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
       color: #fff;
     }
-    .promo-card p {
-      color: rgba(255,255,255,0.7);
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
+    .bonus-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .bonus-card {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    .bonus-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+    .bonus-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffeb3b;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    .bonus-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .bonus-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.95rem;
+    }
+    .bonus-list li:last-child {
+      border-bottom: none;
+    }
+    .bonus-percent {
+      color: #ffeb3b;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .bonus-rollover {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+    }
+    .bonus-highlight {
+      background: rgba(0, 0, 0, 0.8);
+      border: 2px solid #00ff88;
+      padding: 2rem;
+      text-align: center;
+    }
+    .bonus-highlight .bonus-amount {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #00ff88;
+      margin-bottom: 0.5rem;
+    }
+    .bonus-highlight .bonus-subtitle {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .bonus-highlight .bonus-note {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
     }
     
     /* CASINO/GAMES SECTION */
     .casino-section {
       background: #000;
-      padding: 2.5rem 2rem;
+      padding: 2rem 2rem 1.5rem;
       border-bottom: 1px solid rgba(255, 0, 0, 0.1);
     }
     .games-gallery {
@@ -349,14 +404,14 @@
     /* FAQ SECTION */
     .faq-section {
       background: rgba(10,10,10,0.95);
-      padding: 4rem 2rem;
+      padding: 2.5rem 2rem;
     }
     .faq-tabs {
       display: flex;
       justify-content: center;
       gap: 0;
       max-width: 1200px;
-      margin: 0 auto 3rem;
+      margin: 0 auto 2rem;
       border-bottom: 2px solid rgba(255, 0, 0, 0.2);
       flex-wrap: wrap;
     }
@@ -550,15 +605,30 @@
         padding: 0.9rem 2rem;
       }
       .ligas-section {
-        padding: 2rem 0;
+        padding: 1.5rem 0 1rem;
       }
       .casino-section, .faq-section {
-        padding: 2rem 1rem;
+        padding: 1.5rem 1rem;
       }
-      .promos-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+      .promos-wrapper {
         padding: 0 1rem;
+      }
+      .promo-banner-item {
+        padding: 1.5rem 1rem;
+      }
+      .promo-banner-item h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+      }
+      .bonus-options {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .bonus-card {
+        padding: 1.5rem;
+      }
+      .bonus-highlight .bonus-amount {
+        font-size: 2.5rem;
       }
       .games-gallery {
         grid-template-columns: repeat(2, 1fr);
@@ -696,25 +766,27 @@
     </div>
     
     <!-- Promos -->
-    <h3 class="section-title" style="font-size: 2rem; margin-top: 0; padding: 0 2rem;">Promos</h3>
-    <div class="promos-grid">
-      <div class="promo-card">
-        <img src="20.png" alt="200% Bonus" class="promo-image">
-        <h3>200% Sign-Up Bonus</h3>
-        <p>New players only, on qualifying first deposits with competitive rollover terms.</p>
-        <button class="btn btn-primary">Claim Now</button>
-      </div>
-      <div class="promo-card">
-        <img src="125.png" alt="125% Reload" class="promo-image">
-        <h3>125% Reload Bonus</h3>
-        <p>Ongoing bonus on eligible sports reloads to keep your bankroll strong.</p>
-        <button class="btn btn-primary">Claim Now</button>
-      </div>
-      <div class="promo-card">
-        <img src="200.png" alt="Crypto Bonus" class="promo-image">
-        <h3>10% Extra Crypto</h3>
-        <p>Additional freeplay on approved crypto deposits for Bitcoin, Ethereum and more.</p>
-        <button class="btn btn-primary">Claim Now</button>
+    <div class="promos-wrapper">
+      <div class="promo-banner-item">
+        <h3>Choose Your Free Play Bonus</h3>
+        <div class="bonus-options">
+          <div class="bonus-card">
+            <div class="bonus-title">Free Play Bonus</div>
+            <ul class="bonus-list">
+              <li><span class="bonus-percent">10%</span> <span class="bonus-rollover">1X ROLLOVER</span></li>
+              <li><span class="bonus-percent">25%</span> <span class="bonus-rollover">2X ROLLOVER</span></li>
+              <li><span class="bonus-percent">50%</span> <span class="bonus-rollover">4X ROLLOVER</span></li>
+              <li><span class="bonus-percent">100%</span> <span class="bonus-rollover">8X ROLLOVER</span></li>
+              <li><span class="bonus-percent">200%</span> <span class="bonus-rollover">16X ROLLOVER</span></li>
+            </ul>
+          </div>
+          <div class="bonus-card bonus-highlight">
+            <div class="bonus-amount">10%</div>
+            <div class="bonus-subtitle">CASH BONUS</div>
+            <div class="bonus-note">on every single CRYPTO deposit</div>
+            <div class="bonus-note" style="color: #00ff88; margin-top: 1rem;">+ Any Free Play Bonus</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
