@@ -398,6 +398,104 @@
     .casino-section {
       background: #000;
       padding: 2rem 2rem 1.5rem;
+      position: relative;
+    }
+    .casino-content-wrapper {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .casino-main {
+      flex: 0 0 auto;
+    }
+    
+    /* VERTICAL PROMO BANNERS */
+    .promo-banner-vertical {
+      width: 200px;
+      height: 600px;
+      background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(40, 0, 0, 0.95) 100%);
+      border: 2px solid rgba(255, 0, 0, 0.3);
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(255, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    .promo-banner-vertical:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 0, 0, 0.6);
+      box-shadow: 0 12px 48px rgba(255, 0, 0, 0.4);
+    }
+    .promo-banner-vertical .promo-image {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(180deg, rgba(255, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .promo-banner-vertical .promo-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .promo-banner-vertical .promo-content {
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+    }
+    .promo-banner-vertical .promo-tag {
+      display: inline-block;
+      background: #ff0000;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+    .promo-banner-vertical .promo-title {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .promo-banner-vertical .promo-highlight {
+      color: #ff0000;
+    }
+    .promo-banner-vertical .promo-description {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+    .promo-banner-vertical .promo-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .promo-banner-vertical .promo-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
     }
     
     /* WINNERS TABLE SECTION */
@@ -761,6 +859,16 @@
       .casino-section, .faq-section, .winners-section {
         padding: 1.5rem 1rem;
       }
+      .casino-content-wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+      .promo-banner-vertical {
+        display: none;
+      }
+      .casino-main {
+        width: 100%;
+      }
       .winners-table-wrapper {
         margin: 1rem auto 0;
       }
@@ -977,7 +1085,24 @@
   <!-- CASINO/GAMES SECTION -->
   <section class="casino-section">
     <h2 class="section-title">Casino Games</h2>
-    <div class="games-gallery">
+    <div class="casino-content-wrapper">
+      <!-- Left Promo Banner -->
+      <div class="promo-banner-vertical">
+        <div class="promo-image">
+          <img src="promo-left.jpg" alt="Welcome Bonus" style="display: none;">
+          <!-- Placeholder for image -->
+        </div>
+        <div class="promo-content">
+          <span class="promo-tag">Hot Offer</span>
+          <h3 class="promo-title">Welcome<br><span class="promo-highlight">200% Bonus</span></h3>
+          <p class="promo-description">Get up to $2,000 on your first deposit</p>
+          <button class="promo-btn">Claim Now</button>
+        </div>
+      </div>
+
+      <!-- Casino Games Grid -->
+      <div class="casino-main">
+        <div class="games-gallery">
       <div class="game-item">
         <img src="Wild-Mirage.jpg" alt="Wild Mirage">
         <div class="game-overlay">
@@ -1030,6 +1155,21 @@
         <img src="wheel-of-luck-hold-and-win-bets.jpg" alt="Wheel of Luck">
         <div class="game-overlay">
           <span class="game-title">Wheel of Luck</span>
+        </div>
+        </div>
+      </div>
+      
+      <!-- Right Promo Banner -->
+      <div class="promo-banner-vertical">
+        <div class="promo-image">
+          <img src="promo-right.jpg" alt="Crypto Bonus" style="display: none;">
+          <!-- Placeholder for image -->
+        </div>
+        <div class="promo-content">
+          <span class="promo-tag">Exclusive</span>
+          <h3 class="promo-title">Crypto<br><span class="promo-highlight">10% Cashback</span></h3>
+          <p class="promo-description">Every deposit, instant bonus, no limits</p>
+          <button class="promo-btn">Get Bonus</button>
         </div>
       </div>
     </div>
@@ -1254,13 +1394,13 @@
     function generateWinners() {
       const names = ['Mike R.', 'Sarah L.', 'John D.', 'Emma W.', 'Carlos M.', 'Lisa K.', 'David P.', 'Anna S.', 'Tom H.', 'Maria G.', 'Chris B.', 'Nina F.', 'Alex T.', 'Sophie C.', 'Ryan J.'];
       const games = ['Wild Mirage', 'Hawaiian Fever', 'Hot Blizzard', 'La Tomatina', 'Pandas Run', 'Sweet Crush', 'The Cup', 'Thrones of Persia', 'Wheel of Luck'];
-      const times = ['2 min ago', '5 min ago', '12 min ago', '18 min ago', '25 min ago', '32 min ago', '45 min ago', '1 hour ago'];
+      const times = ['2 min ago', '5 min ago', '12 min ago', '18 min ago', '25 min ago'];
       
       const tbody = document.getElementById('winners-tbody');
       tbody.innerHTML = '';
       
-      // Generate 8 random winners
-      for (let i = 0; i < 8; i++) {
+      // Generate 5 random winners
+      for (let i = 0; i < 5; i++) {
         const name = names[Math.floor(Math.random() * names.length)];
         const game = games[Math.floor(Math.random() * games.length)];
         const amount = (Math.random() * 9000 + 1000).toFixed(2);
