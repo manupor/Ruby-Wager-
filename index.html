@@ -401,24 +401,25 @@
       position: relative;
     }
     .casino-content-wrapper {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 200px auto 200px;
       gap: 1.5rem;
       max-width: 1400px;
       margin: 0 auto;
-      position: relative;
+      align-items: start;
+      justify-items: center;
     }
     .casino-main {
-      flex: 0 0 auto;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    .promo-banner-left,
+    .promo-banner-left {
+      justify-self: end;
+    }
     .promo-banner-right {
-      flex-shrink: 0;
-      align-self: flex-start;
+      justify-self: start;
     }
     
     /* VERTICAL PROMO BANNERS */
@@ -869,14 +870,18 @@
         padding: 1.5rem 1rem;
       }
       .casino-content-wrapper {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
+        gap: 1rem;
       }
       .promo-banner-vertical {
         display: none;
       }
       .casino-main {
         width: 100%;
+      }
+      .promo-banner-left,
+      .promo-banner-right {
+        justify-self: center;
       }
       .winners-table-wrapper {
         margin: 1rem auto 0;
