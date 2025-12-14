@@ -144,18 +144,18 @@
     
     /* MAIN BANNER */
     .main-banner {
-      min-height: 500px;
-      background: url('HERO-BACK-RUBY-2.jpg');
-      background-size: contain;
+      min-height: 470px;
+      background: url('hero-new.png');
+      background-size: auto 120%;
       background-repeat: no-repeat;
-      background-position: 60% center;
+      background-position: right calc(50% + 28px);
       display: flex;
       align-items: center;
       justify-content: flex-start;
       padding: 2rem 3rem;
       margin-top: 105px;
       position: relative;
-      max-width: 1500px;
+      max-width: 1400px;
       margin-left: auto;
       margin-right: auto;
       overflow: hidden;
@@ -245,9 +245,25 @@
     
     /* LIGAS - GIRANDO SECTION */
     .ligas-section {
-      background: rgba(10,10,10,0.95);
+      background: url('fondo.jpg') center bottom;
+      background-size: cover;
       padding: 2rem 0 1.5rem;
       border-bottom: 1px solid rgba(255, 0, 0, 0.1);
+      position: relative;
+    }
+    .ligas-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,1) 100%);
+      z-index: 0;
+    }
+    .ligas-section > * {
+      position: relative;
+      z-index: 1;
       overflow: hidden;
     }
     .section-title {
@@ -295,16 +311,21 @@
     
     /* PROMOS SECTION */
     .promos-wrapper {
-      max-width: 900px;
+      max-width: 1400px;
       margin: 1.5rem auto 0;
-      padding: 0 2rem;
+      padding: 0 1rem;
     }
     .promo-banner-item {
       background: rgba(20, 20, 20, 0.6);
       border-radius: 12px;
-      padding: 2rem;
+      padding: 1.5rem;
       border: 1px solid rgba(255, 0, 0, 0.2);
       backdrop-filter: blur(10px);
+    }
+    .bonus-options {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
     }
     .promo-banner-item h3 {
       font-size: 1.5rem;
@@ -315,17 +336,13 @@
       color: #fff;
       text-align: center;
     }
-    .bonus-options {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
     .bonus-card {
       background: rgba(0, 0, 0, 0.4);
       border-radius: 8px;
-      padding: 1.5rem;
+      padding: 1.25rem;
       border: 1px solid rgba(255, 255, 255, 0.08);
       transition: all 0.3s ease;
+      min-width: 0;
     }
     .bonus-card:hover {
       border-color: rgba(255, 0, 0, 0.4);
@@ -401,31 +418,27 @@
       position: relative;
     }
     .casino-content-wrapper {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      width: 100%;
-      max-width: 1100px;
+      display: grid;
+      grid-template-columns: 200px auto 200px;
+      gap: 2rem;
+      max-width: 1000px;
       margin: 0 auto;
+      align-items: center;
+      justify-content: center;
     }
     .casino-main {
-      order: 2;
-      flex-shrink: 0;
+      justify-self: center;
     }
     .promo-banner-left {
-      order: 1;
-      flex-shrink: 0;
+      justify-self: center;
     }
     .promo-banner-right {
-      order: 3;
-      flex-shrink: 0;
+      justify-self: center;
     }
     .games-gallery {
       display: grid;
-      grid-template-columns: repeat(3, 150px);
-      gap: 0.75rem;
+      grid-template-columns: repeat(3, 180px);
+      gap: 1rem;
     }
     
     /* VERTICAL PROMO BANNERS */
@@ -575,8 +588,8 @@
     .game-item {
       position: relative;
       aspect-ratio: 1;
-      width: 150px;
-      height: 150px;
+      width: 180px;
+      height: 180px;
       border-radius: 12px;
       overflow: hidden;
       cursor: pointer;
@@ -764,7 +777,28 @@
       font-size: 0.75rem;
     }
     
-    /* RESPONSIVE */
+    /* RESPONSIVE - TABLET */
+    @media (max-width: 1024px) {
+      .casino-content-wrapper {
+        gap: 1.5rem;
+      }
+      .promo-banner-vertical {
+        width: 180px;
+        height: 500px;
+      }
+      .games-gallery {
+        grid-template-columns: repeat(3, 150px);
+      }
+      .game-item {
+        width: 150px;
+        height: 150px;
+      }
+      .bonus-options {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    /* RESPONSIVE - MOBILE */
     @media (max-width: 768px) {
       .promo-banner {
         height: 38px;
@@ -868,18 +902,65 @@
         padding: 1.5rem 1rem;
       }
       .casino-content-wrapper {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
       }
       .promo-banner-vertical {
-        display: none;
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        border-radius: 12px;
+      }
+      .promo-banner-vertical .promo-image {
+        width: 130px;
+        height: 160px;
+        flex-shrink: 0;
+        border-radius: 12px 0 0 12px;
+      }
+      .promo-banner-vertical .promo-image img {
+        border-radius: 12px 0 0 12px;
+      }
+      .promo-banner-vertical .promo-content {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+      }
+      .promo-banner-vertical .promo-tag {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .promo-banner-vertical .promo-title {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      .promo-banner-vertical .promo-highlight {
+        font-size: 1.1rem;
+      }
+      .promo-banner-vertical .promo-description {
+        font-size: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+      .promo-banner-vertical .promo-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
+        align-self: flex-start;
       }
       .casino-main {
         width: 100%;
+        order: 1;
       }
-      .promo-banner-left,
+      .promo-banner-left {
+        order: 2;
+      }
       .promo-banner-right {
-        justify-self: center;
+        order: 3;
       }
       .winners-table-wrapper {
         margin: 1rem auto 0;
@@ -936,15 +1017,17 @@
       }
       .games-gallery {
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.6rem;
+        gap: 0.75rem;
         max-width: 100%;
-        padding: 0 1rem;
+        padding: 0;
       }
       .game-item {
-        max-width: 100%;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
       }
       .game-title {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
       }
       .faq-tabs {
         flex-direction: column;
@@ -961,6 +1044,43 @@
       }
       .league-logo {
         height: 30px;
+      }
+    }
+    
+    /* RESPONSIVE - SMALL MOBILE */
+    @media (max-width: 480px) {
+      .main-banner {
+        min-height: 350px;
+        padding: 1.5rem;
+        background-size: cover;
+        background-position: 70% center;
+      }
+      .banner-content h1 {
+        font-size: 1.8rem;
+      }
+      .banner-content p {
+        font-size: 0.85rem;
+      }
+      .promo-banner-vertical {
+        max-width: 100%;
+        flex-direction: column;
+      }
+      .promo-banner-vertical .promo-image {
+        width: 100%;
+        height: 120px;
+      }
+      .games-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+      }
+      .bonus-options {
+        gap: 0.75rem;
+      }
+      .bonus-card {
+        padding: 1rem;
+      }
+      .bonus-highlight .bonus-amount {
+        font-size: 1.75rem;
       }
     }
   </style>
@@ -1089,6 +1209,19 @@
             <div class="bonus-subtitle">Cash Bonus</div>
             <div class="bonus-note">On every crypto deposit<br>+ Any Free Play Bonus</div>
           </div>
+          <div class="bonus-card">
+            <div class="bonus-title">Reload Bonus</div>
+            <ul class="bonus-list">
+              <li><span class="bonus-percent">15%</span> <span class="bonus-rollover">2X ROLLOVER</span></li>
+              <li><span class="bonus-percent">30%</span> <span class="bonus-rollover">4X ROLLOVER</span></li>
+              <li><span class="bonus-percent">50%</span> <span class="bonus-rollover">6X ROLLOVER</span></li>
+            </ul>
+          </div>
+          <div class="bonus-card bonus-highlight">
+            <div class="bonus-amount">$500</div>
+            <div class="bonus-subtitle">VIP Bonus</div>
+            <div class="bonus-note">Exclusive for high rollers<br>+ Weekly cashback</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1101,8 +1234,7 @@
       <!-- Left Promo Banner -->
       <div class="promo-banner-vertical promo-banner-left">
         <div class="promo-image">
-          <img src="promo-left.jpg" alt="Welcome Bonus" style="display: none;">
-          <!-- Placeholder for image -->
+          <img src="welcome bonus.jpg" alt="Welcome Bonus">
         </div>
         <div class="promo-content">
           <span class="promo-tag">Hot Offer</span>
@@ -1170,12 +1302,12 @@
         </div>
         </div>
       </div>
+      </div>
       
       <!-- Right Promo Banner -->
       <div class="promo-banner-vertical promo-banner-right">
         <div class="promo-image">
-          <img src="promo-right.jpg" alt="Crypto Bonus" style="display: none;">
-          <!-- Placeholder for image -->
+          <img src="crypto banner.jpg" alt="Crypto Bonus">
         </div>
         <div class="promo-content">
           <span class="promo-tag">Exclusive</span>
