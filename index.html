@@ -401,26 +401,29 @@
       position: relative;
     }
     .casino-content-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: grid;
+      grid-template-columns: 200px 648px 200px;
       gap: 3rem;
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
+      align-items: center;
+      justify-content: center;
     }
     .casino-main {
       display: flex;
       justify-content: center;
+      width: 100%;
     }
     .promo-banner-left,
     .promo-banner-right {
       width: 200px;
-      flex-shrink: 0;
+      justify-self: center;
     }
     .games-gallery {
       display: grid;
       grid-template-columns: repeat(3, 200px);
       gap: 1rem;
+      justify-content: center;
     }
     
     /* VERTICAL PROMO BANNERS */
