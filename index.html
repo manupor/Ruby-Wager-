@@ -402,15 +402,17 @@
     }
     .casino-content-wrapper {
       display: grid;
-      grid-template-columns: 200px auto 200px;
-      gap: 1.5rem;
-      max-width: 1400px;
+      grid-template-columns: 180px 1fr 180px;
+      gap: 1rem;
+      max-width: 1300px;
       margin: 0 auto;
       align-items: center;
       justify-items: center;
+      width: 100%;
     }
     .casino-main {
       width: 100%;
+      max-width: 750px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -426,8 +428,8 @@
     
     /* VERTICAL PROMO BANNERS */
     .promo-banner-vertical {
-      width: 200px;
-      height: 600px;
+      width: 180px;
+      height: 580px;
       background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(40, 0, 0, 0.95) 100%);
       border: 2px solid rgba(255, 0, 0, 0.3);
       border-radius: 16px;
@@ -444,7 +446,7 @@
     }
     .promo-banner-vertical .promo-image {
       width: 100%;
-      height: 300px;
+      height: 280px;
       background: linear-gradient(180deg, rgba(255, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
       display: flex;
       align-items: center;
@@ -458,7 +460,7 @@
       object-fit: cover;
     }
     .promo-banner-vertical .promo-content {
-      padding: 1.5rem 1.25rem;
+      padding: 1.25rem 1rem;
       text-align: center;
     }
     .promo-banner-vertical .promo-tag {
@@ -580,7 +582,7 @@
       position: relative;
       aspect-ratio: 1;
       width: 100%;
-      max-width: 240px;
+      max-width: 220px;
       border-radius: 12px;
       overflow: hidden;
       cursor: pointer;
