@@ -879,46 +879,52 @@
       }
     }
     
-    /* RESPONSIVE - MOBILE */
+    /* RESPONSIVE - MOBILE (BetUS Style) */
     @media (max-width: 768px) {
+      /* Top Banner */
       .promo-banner {
-        height: 38px;
+        height: 32px;
       }
       .promo-item {
-        font-size: 0.65rem;
-        padding: 0 1.5rem;
-        gap: 0.6rem;
+        font-size: 0.6rem;
+        padding: 0 1rem;
+        gap: 0.4rem;
       }
       .promo-icon {
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
       }
+      
+      /* Header - Compact */
       .header {
-        padding: 0.8rem 1rem;
-        top: 38px;
+        padding: 0.6rem 1rem;
+        top: 32px;
       }
       .logo {
-        height: 35px;
+        height: 32px;
       }
       .nav-links {
         display: none;
       }
       .header-buttons {
-        gap: 0.5rem;
+        gap: 0.4rem;
       }
       .btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.75rem;
+        padding: 0.45rem 0.8rem;
+        font-size: 0.7rem;
+        border-radius: 4px;
       }
+      
+      /* Hero - BetUS Style Compact */
       .main-banner {
         min-height: auto;
-        padding: 3rem 1.5rem;
-        margin-top: 90px;
+        padding: 1.5rem 1rem;
+        margin-top: 75px;
         flex-direction: column;
-        gap: 0;
+        gap: 1rem;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(180deg, #1a0000 0%, #000 100%);
+        background: linear-gradient(135deg, #1a0505 0%, #0a0a0a 50%, #000 100%);
         background-image: none;
       }
       .banner-content {
@@ -932,78 +938,204 @@
         display: none;
       }
       .banner-kicker {
-        font-size: 0.7rem;
+        font-size: 0.65rem;
+        background: linear-gradient(90deg, #ff0000, #ff4444);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.5rem;
       }
       .banner-content h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+        margin-bottom: 0.75rem;
+      }
+      .banner-content h1 .highlight {
+        display: block;
         font-size: 2.2rem;
+        color: #ff0000;
       }
       .banner-content p {
-        font-size: 0.95rem;
+        font-size: 0.8rem;
+        opacity: 0.85;
+        margin-bottom: 1rem;
+        line-height: 1.5;
       }
       .banner-buttons {
         flex-direction: column;
         width: 100%;
+        gap: 0.6rem;
       }
       .btn-large {
         width: 100%;
-        padding: 0.9rem 2rem;
+        padding: 0.85rem 1.5rem;
+        font-size: 0.85rem;
+        border-radius: 6px;
+        font-weight: 700;
       }
+      .btn-primary.btn-large {
+        background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+        box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+      }
+      .btn-outline.btn-large {
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      
+      /* Ligas Section */
       .ligas-section {
-        padding: 1.5rem 0 1rem;
+        padding: 1rem 0;
       }
+      .leagues-wrapper {
+        padding: 0;
+      }
+      .leagues-grid {
+        gap: 1.5rem;
+        animation: scrollLeagues 15s linear infinite;
+      }
+      .league-logo {
+        height: 28px;
+        opacity: 0.9;
+      }
+      
+      /* Bonus Section - 2x2 Grid */
+      .promos-wrapper {
+        padding: 0 0.75rem;
+      }
+      .promo-banner-item {
+        padding: 1rem;
+        border-radius: 10px;
+        background: rgba(15, 15, 15, 0.9);
+      }
+      .promo-banner-item h3 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        letter-spacing: 0.05em;
+      }
+      .bonus-options {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+      }
+      .bonus-card {
+        padding: 0.75rem;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+      .bonus-title {
+        font-size: 0.65rem;
+        margin-bottom: 0.6rem;
+      }
+      .bonus-list {
+        list-style: none;
+      }
+      .bonus-list li {
+        padding: 0.35rem 0;
+        font-size: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+      .bonus-list li:last-child {
+        border-bottom: none;
+      }
+      .bonus-percent {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: #ff0000;
+      }
+      .bonus-rollover {
+        font-size: 0.6rem;
+        opacity: 0.7;
+      }
+      .bonus-highlight {
+        background: linear-gradient(135deg, rgba(255,0,0,0.15) 0%, rgba(255,0,0,0.05) 100%);
+        border-color: rgba(255,0,0,0.3);
+      }
+      .bonus-highlight .bonus-amount {
+        font-size: 1.6rem;
+      }
+      .bonus-highlight .bonus-subtitle {
+        font-size: 0.75rem;
+      }
+      .bonus-highlight .bonus-note {
+        font-size: 0.65rem;
+        line-height: 1.4;
+      }
+      
+      /* Casino Section */
       .casino-section, .faq-section, .winners-section {
-        padding: 1.5rem 1rem;
+        padding: 1.25rem 0.75rem;
+      }
+      .section-title {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
       }
       .casino-content-wrapper {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
-        align-items: center;
+        gap: 1rem;
+        align-items: stretch;
       }
+      
+      /* Promo Banners - Horizontal Cards */
       .promo-banner-vertical {
         width: 100%;
-        max-width: 400px;
         height: auto;
         display: flex;
         flex-direction: row;
-        border-radius: 12px;
+        border-radius: 10px;
+        overflow: hidden;
+        background: rgba(15,15,15,0.95);
+        border: 1px solid rgba(255,0,0,0.2);
       }
       .promo-banner-vertical .promo-image {
-        width: 130px;
-        height: 160px;
+        width: 100px;
+        height: 120px;
         flex-shrink: 0;
-        border-radius: 12px 0 0 12px;
       }
       .promo-banner-vertical .promo-image img {
-        border-radius: 12px 0 0 12px;
+        border-radius: 0;
       }
       .promo-banner-vertical .promo-content {
-        padding: 1rem;
+        padding: 0.75rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         flex: 1;
       }
       .promo-banner-vertical .promo-tag {
-        font-size: 0.6rem;
-        padding: 0.2rem 0.5rem;
-        margin-bottom: 0.5rem;
+        font-size: 0.5rem;
+        padding: 0.15rem 0.4rem;
+        margin-bottom: 0.3rem;
+        background: #ff0000;
+        border-radius: 3px;
+        align-self: flex-start;
       }
       .promo-banner-vertical .promo-title {
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
+        font-size: 0.85rem;
+        margin-bottom: 0.25rem;
+        line-height: 1.2;
       }
       .promo-banner-vertical .promo-highlight {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        color: #ff0000;
       }
       .promo-banner-vertical .promo-description {
-        font-size: 0.75rem;
-        margin-bottom: 0.75rem;
+        font-size: 0.65rem;
+        margin-bottom: 0.5rem;
+        opacity: 0.8;
+        line-height: 1.3;
       }
       .promo-banner-vertical .promo-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.6rem;
         align-self: flex-start;
+        border-radius: 4px;
       }
       .casino-main {
         width: 100%;
@@ -1015,62 +1147,12 @@
       .promo-banner-right {
         order: 3;
       }
-      .winners-table-wrapper {
-        margin: 1rem auto 0;
-      }
-      .winners-table th,
-      .winners-table td {
-        padding: 0.75rem 0.75rem;
-        font-size: 0.85rem;
-      }
-      .winners-table th {
-        font-size: 0.75rem;
-      }
-      .winner-amount {
-        font-size: 0.95rem;
-      }
-      .promos-wrapper {
-        padding: 0 1rem;
-      }
-      .promo-banner-item {
-        padding: 1.5rem 1rem;
-      }
-      .promo-banner-item h3 {
-        font-size: 1.2rem;
-        margin-bottom: 1.2rem;
-      }
-      .bonus-options {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-      .bonus-card {
-        padding: 1.2rem;
-      }
-      .bonus-title {
-        font-size: 0.75rem;
-      }
-      .bonus-list li {
-        padding: 0.6rem 0;
-        font-size: 0.85rem;
-      }
-      .bonus-percent {
-        font-size: 0.95rem;
-      }
-      .bonus-rollover {
-        font-size: 0.75rem;
-      }
-      .bonus-highlight .bonus-amount {
-        font-size: 2rem;
-      }
-      .bonus-highlight .bonus-subtitle {
-        font-size: 0.9rem;
-      }
-      .bonus-highlight .bonus-note {
-        font-size: 0.8rem;
-      }
+      
+      /* Games Grid - 3 columns like BetUS */
       .games-gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
         max-width: 100%;
         padding: 0;
       }
@@ -1078,98 +1160,165 @@
         width: 100%;
         height: auto;
         aspect-ratio: 1;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .game-item img {
+        border-radius: 8px;
+      }
+      .game-overlay {
+        border-radius: 8px;
       }
       .game-title {
-        font-size: 0.75rem;
+        font-size: 0.6rem;
+        padding: 0.3rem;
+      }
+      
+      /* Winners Table */
+      .winners-section {
+        background: rgba(10,10,10,0.95);
+      }
+      .winners-table-wrapper {
+        margin: 0.75rem auto 0;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .winners-table th,
+      .winners-table td {
+        padding: 0.6rem 0.5rem;
+        font-size: 0.7rem;
+      }
+      .winners-table th {
+        font-size: 0.6rem;
+        background: rgba(255,0,0,0.1);
+      }
+      .winner-amount {
+        font-size: 0.8rem;
+        color: #00ff00;
+      }
+      
+      /* FAQ Section */
+      .faq-section {
+        background: #0a0a0a;
       }
       .faq-tabs {
-        flex-direction: column;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 0;
+        margin-bottom: 1rem;
       }
       .tab-button {
-        border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+        flex-shrink: 0;
+        padding: 0.6rem 1rem;
+        font-size: 0.7rem;
+        border-bottom: 2px solid transparent;
+        border-left: none;
+        white-space: nowrap;
       }
       .tab-button.active {
-        border-left: 4px solid #ff0000;
+        border-bottom: 2px solid #ff0000;
+        border-left: none;
+        background: rgba(255,0,0,0.1);
       }
-      .leagues-grid {
-        gap: 2.5rem;
-        animation: scrollLeagues 20s linear infinite;
+      .faq-question {
+        font-size: 0.85rem;
+        padding: 1rem;
       }
-      .league-logo {
-        height: 30px;
+      .faq-answer {
+        font-size: 0.8rem;
+        padding: 0 1rem;
       }
-      .features-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.75rem;
+      
+      /* Footer - Compact */
+      footer {
+        padding: 1.5rem 1rem;
       }
-      .feature-box {
-        padding: 1.25rem 0.75rem;
+      .footer-logo {
+        height: 40px;
+        margin-bottom: 1rem;
       }
-      .feature-icon {
-        font-size: 1.5rem;
+      .footer-links {
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      .footer-links a {
+        font-size: 0.7rem;
+      }
+      .footer-meta {
+        padding-top: 1rem;
+      }
+      .footer-meta p {
+        font-size: 0.65rem;
         margin-bottom: 0.5rem;
       }
-      .feature-title {
-        font-size: 0.85rem;
+      .footer-payments {
+        gap: 0.4rem;
       }
-      .cta-button {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
-      }
-      .disclaimer-text {
-        font-size: 0.7rem;
+      .payment-chip {
+        font-size: 0.6rem;
+        padding: 0.3rem 0.6rem;
       }
     }
     
     /* RESPONSIVE - SMALL MOBILE */
     @media (max-width: 480px) {
       .main-banner {
-        padding: 2rem 1rem;
+        padding: 1.25rem 0.75rem;
+        margin-top: 70px;
       }
       .banner-content h1 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
+      }
+      .banner-content h1 .highlight {
+        font-size: 1.8rem;
       }
       .banner-content p {
-        font-size: 0.8rem;
-      }
-      .promo-banner-vertical {
-        max-width: 100%;
-        flex-direction: column;
-      }
-      .promo-banner-vertical .promo-image {
-        width: 100%;
-        height: 120px;
-      }
-      .games-gallery {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.5rem;
-      }
-      .bonus-options {
-        gap: 0.75rem;
-      }
-      .bonus-card {
-        padding: 1rem;
-      }
-      .bonus-highlight .bonus-amount {
-        font-size: 1.75rem;
-      }
-      .features-cta-section {
-        padding: 2rem 1rem;
-      }
-      .feature-box {
-        padding: 1rem 0.5rem;
-      }
-      .feature-icon {
-        font-size: 1.25rem;
-      }
-      .feature-title {
         font-size: 0.75rem;
       }
-      .cta-button {
-        padding: 0.9rem 1.5rem;
-        font-size: 1rem;
-        width: 100%;
-        max-width: 280px;
+      .btn-large {
+        padding: 0.75rem 1rem;
+        font-size: 0.8rem;
+      }
+      .bonus-card {
+        padding: 0.6rem;
+      }
+      .bonus-title {
+        font-size: 0.6rem;
+      }
+      .bonus-list li {
+        padding: 0.25rem 0;
+        font-size: 0.65rem;
+      }
+      .bonus-percent {
+        font-size: 0.75rem;
+      }
+      .bonus-rollover {
+        font-size: 0.5rem;
+      }
+      .bonus-highlight .bonus-amount {
+        font-size: 1.2rem;
+      }
+      .bonus-highlight .bonus-subtitle {
+        font-size: 0.6rem;
+      }
+      .bonus-highlight .bonus-note {
+        font-size: 0.55rem;
+      }
+      .games-gallery {
+        gap: 0.4rem;
+      }
+      .game-title {
+        font-size: 0.55rem;
+      }
+      .promo-banner-vertical .promo-image {
+        width: 85px;
+        height: 100px;
+      }
+      .promo-banner-vertical .promo-title {
+        font-size: 0.75rem;
+      }
+      .promo-banner-vertical .promo-highlight {
+        font-size: 0.9rem;
       }
     }
   </style>
