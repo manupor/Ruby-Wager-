@@ -4,10 +4,35 @@
   <meta charset="UTF-8" />
   <title>Ruby Wager Landing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="mobile-web-app-capable" content="yes" />
   <link rel="preload" href="hero1.jpg" as="image" fetchpriority="high">
   <style>
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('montserrat/400Regular/Montserrat_400Regular.203d753a80557746c23ce95191fbf013.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('montserrat/700Bold/Montserrat_700Bold.c300fff4e4ae0ca994c58ac9f6639b19.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('montserrat/900Black/Montserrat_900Black.d414a87f1942b9c4ae40ef793f171dae.ttf') format('truetype');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
     :root {
       --ruby: #ff0000;
       --ruby-dark: #cc0000;
@@ -16,122 +41,224 @@
       --muted: #999999;
       --accent: #ff0000;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
     html {
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
     }
     body {
-      font-family: system-ui, -apple-system, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       background: #000000;
       color: var(--text);
       line-height: 1.5;
       min-height: 100vh;
     }
     
-    /* TOP PROMO BANNER */
-    .promo-banner {
+        
+    /* HEADER */
+    .header {
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 3rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 200;
-      background: #000;
-      border-bottom: 1px solid rgba(255, 0, 0, 0.3);
-      overflow: hidden;
-      height: 45px;
-      display: flex;
-      align-items: center;
+      z-index: 100;
     }
-    .promo-scroll {
-      display: flex;
-      white-space: nowrap;
-      animation: scrollBanner 30s linear infinite;
-      align-items: center;
-    }
-    .promo-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      padding: 0 2.5rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-    .promo-highlight {
-      color: #ff0000;
-    }
-    .promo-icon {
-      width: 16px;
-      height: 16px;
-      color: #ff0000;
-    }
-    @keyframes scrollBanner {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    
-    /* HEADER */
-    .header {
-      background: rgba(0, 0, 0, 0.95);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 1rem 3rem;
+    .header-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: fixed;
-      top: 45px;
-      left: 0;
-      right: 0;
-      z-index: 100;
+    }
+    .header-bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 0.5rem;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.5rem, 1vw, 1rem);
+      flex-shrink: 0;
     }
     .logo {
-      height: 45px;
+      height: clamp(32px, 3.5vw, 40px);
       width: auto;
+    }
+    .tagline-svg {
+      height: clamp(20px, 2.5vw, 28px);
+      width: auto;
+      opacity: 0.9;
+    }
+    @media (max-width: 768px) {
+      .tagline-svg {
+        display: none;
+      }
     }
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 0;
       align-items: center;
     }
     .nav-links a {
       color: rgba(255,255,255,0.8);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-size: 1.1rem;
+      font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       transition: color 0.3s ease;
+      padding: 0.5rem 2rem;
+      border-right: 2px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      white-space: nowrap;
+    }
+    .nav-links a svg {
+      width: 22px;
+      height: 22px;
+      fill: rgba(255,255,255,0.6);
+      transition: fill 0.3s ease;
+    }
+    .nav-links a:hover svg {
+      fill: #fff;
+    }
+    .nav-links a:last-child {
+      border-right: none;
     }
     .nav-links a:hover {
       color: #fff;
     }
     .header-buttons {
       display: flex;
+      gap: clamp(0.5rem, 1vw, 1rem);
+      flex-shrink: 0;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      z-index: 1001;
+    }
+    .hamburger span {
+      width: 28px;
+      height: 3px;
+      background: #fff;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.98);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      padding: 100px 2rem 2rem;
+      overflow-y: auto;
+    }
+    .mobile-menu.active {
+      right: 0;
+    }
+    .mobile-menu a {
+      display: flex;
+      align-items: center;
       gap: 1rem;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: color 0.3s ease;
+    }
+    .mobile-menu a:hover {
+      color: #fff;
+    }
+    .mobile-menu a svg {
+      width: 22px;
+      height: 22px;
+      fill: rgba(255,255,255,0.6);
+      transition: fill 0.3s ease;
+    }
+    .mobile-menu a:hover svg {
+      fill: #fff;
+    }
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .mobile-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
     }
     .btn {
-      border-radius: 999px;
-      padding: 0.6rem 1.5rem;
+      border-radius: 20px;
+      padding: 1rem 1.5rem;
       border: 1px solid transparent;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      font-size: 0.85rem;
+      font-size: 1.1rem;
       background: none;
       color: var(--text);
       transition: all 0.16s;
+      width: 180px;
+      text-align: center;
     }
     .btn-outline {
       border-color: rgba(255, 255, 255, 0.3);
       color: var(--muted);
+      border-width: 2px;
     }
     .btn-outline:hover {
       border-color: rgba(255, 255, 255, 0.6);
       color: var(--text);
+    }
+    .banner-buttons .btn-outline {
+      display: none;
     }
     .btn-primary {
       background: linear-gradient(135deg, #ff0000, #cc0000);
@@ -143,101 +270,415 @@
       filter: brightness(1.05);
     }
     
-    /* MAIN BANNER */
+    /* MAIN BANNER - PREMIUM CASINO DESIGN */
     .main-banner {
-      min-height: 470px;
-      background: url('hero1.jpg');
-      background-size: auto 100%;
-      background-repeat: no-repeat;
-      background-position: right calc(50% + 28px);
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 2rem 3rem;
-      margin-top: 105px;
+      width: 100%;
+      margin-top: 100px;
+      margin-bottom: 0;
       position: relative;
-      max-width: 1400px;
-      margin-left: auto;
-      margin-right: auto;
-      overflow: hidden;
+      padding: 0;
+      background: #000000;
+      display: block;
+      line-height: 0;
     }
-    .banner-content {
-      max-width: 600px;
-      text-align: left;
+
+    .hero-background-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      position: relative;
+      z-index: 0;
+    }
+
+    .main-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, 
+        rgba(0,0,0,1) 0%, 
+        rgba(0,0,0,0) 10%, 
+        rgba(0,0,0,0) 90%, 
+        rgba(0,0,0,0.8) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .banner-content-new {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-mobile-content {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.1rem;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .hero-mobile-img {
+      display: none;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-mobile-eyebrow {
+      font-size: 0.95rem;
+      letter-spacing: 0.55em;
+      text-transform: uppercase;
+      margin: 0;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .hero-mobile-percent {
+      font-size: clamp(4rem, 22vw, 7rem);
+      font-weight: 900;
+      margin: 0;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .hero-mobile-subtitle {
+      font-size: 1.3rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin: -0.4rem 0 0;
+    }
+
+    .hero-mobile-tagline {
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.8);
+      margin: 0;
+    }
+
+    .hero-mobile-pills {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-mobile-pill {
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 999px;
+      padding: 0.55rem 1.1rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+    }
+
+    .banner-buttons {
+      position: relative;
       z-index: 2;
     }
-    .banner-image {
-      flex: 1;
+
+    .hero-title-new {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      gap: 0.2rem;
+      position: relative;
+    }
+
+    .hero-banner-left {
+      position: absolute;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 900px;
+      max-width: 55vw;
+      height: auto;
+      z-index: 2;
+    }
+
+    .hero-floating-img-right {
+      position: absolute;
+      right: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 480px;
+      height: auto;
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+      z-index: 1;
+    }
+
+    .join-now-stack {
+      position: absolute;
+      left: 3vw;
+      bottom: calc(43vh - 200px);
+      width: 30vw;
+      max-width: 550px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.85rem;
+      z-index: 3;
+      animation: pulseDesktop 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseDesktop {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4);
+      }
+      50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0);
+      }
+    }
+
+    .btn-join-now-overlay {
+      width: 100%;
+      font-family: 'Montserrat', sans-serif !important;
+      font-size: clamp(1.2rem, 2.5vw, 37px);
+      font-weight: 700 !important;
+      padding: clamp(0.6rem, 1.5vw, 0.9rem) clamp(2rem, 4vw, 4rem);
+      border-radius: 20px;
+      letter-spacing: 0.15em;
+      line-height: 1.7;
+      background: rgba(255, 0, 0, 0.8);
+      border: none;
+      color: #ffffff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(255, 0, 0, 0.5);
+      text-transform: uppercase;
+    }
+    .btn-join-now-overlay:hover {
+      background: rgba(255, 0, 0, 1);
+      box-shadow: 0 6px 30px rgba(255, 0, 0, 0.7);
+    }
+
+    .percent-huge {
+      font-family: 'Montserrat', sans-serif !important;
+      font-weight: 900 !important;
+      font-size: 11rem !important;
+      line-height: 0.85 !important;
+      color: #ffffff !important;
+      text-shadow: none;
+      display: block;
+      margin-bottom: -0.3rem;
+      letter-spacing: -0.02em;
+      position: relative;
+      z-index: 2;
+    }
+
+    .bonus-text-new {
+      font-family: 'Montserrat', sans-serif !important;
+      font-size: 3rem !important;
+      text-transform: uppercase;
+      color: #ffffff !important;
+      font-weight: 400 !important;
+      letter-spacing: 0.25em;
+      line-height: 1;
+      display: block;
+      margin-top: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-tagline {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 1.4rem;
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+      display: block;
+      margin-top: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-subfeatures {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .subfeature {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      position: relative;
-      min-width: 0;
+      gap: 0.8rem;
+      background: transparent !important;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      border: 2px solid #ffffff !important;
     }
-    .banner-image img {
-      width: 950px;
-      height: auto;
-      object-fit: contain;
-      transform: scale(1.1);
+
+    .subfeature i {
+      color: #ffffff !important;
+      width: 22px;
+      height: 22px;
     }
-    .hero-badge {
-      position: absolute;
-      background: #fff;
-      color: #000;
-      font-weight: 900;
-      text-transform: uppercase;
-      padding: 1.2rem 3rem;
-      border-radius: 60px;
-      font-size: 2rem;
-      letter-spacing: 0.02em;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-      z-index: 3;
-      white-space: nowrap;
-      border: 3px solid #000;
-    }
-    .hero-badge-top {
-      top: 8%;
-      right: 12%;
-      transform: rotate(-2deg);
-    }
-    .hero-badge-bottom {
-      bottom: 12%;
-      right: 8%;
-      transform: rotate(1deg);
-      font-size: 1.8rem;
-      line-height: 1.4;
-      text-align: center;
-    }
-    .banner-kicker {
-      color: #ff0000;
-      font-size: 0.85rem;
+
+    .subfeature span {
+      color: #ffffff !important;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
     }
-    .banner-content h1 {
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
-      font-weight: 900;
-      line-height: 1;
-      margin-bottom: 1.2rem;
+
+    .btn-hero-cta {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      padding: 1.1rem 4.5rem;
+      border-radius: 50px;
+      letter-spacing: 0.12em;
+      background: #ff0000;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 40px rgba(255, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-hero-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-hero-cta:hover {
+      background: #cc0000;
+      box-shadow: 0 0 60px rgba(255, 0, 0, 0.6);
+      transform: none;
+    }
+
+    .btn-hero-cta:hover::before {
+      left: 100%;
+    }
+
+    /* Hide unused elements */
+    .hero-banner-full, .hero-overlay-btn, .hero-content-left, .hero-image-right {
+      display: none;
+    }
+
+    /* TYPOGRAPHY MATCHING REFERENCE IMAGE */
+    .hero-top-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .signup-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 0.85;
+    }
+
+    .signup-line {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: #fff;
+      letter-spacing: 0.05em;
+      font-weight: 400;
+    }
+
+    .percent-huge-white {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(6rem, 15vw, 13rem);
+      color: #fff;
+      line-height: 0.8;
+      margin: 0;
       letter-spacing: -0.02em;
     }
-    .banner-content h1 .highlight {
-      color: #ff0000;
-      display: block;
+
+    .crypto-row {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      color: #fff;
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+      white-space: nowrap;
     }
-    .banner-content p {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 2rem;
-      line-height: 1.6;
-      max-width: 480px;
+
+    .join-now-rect {
+      display: inline-block;
+      background-color: #b30000; /* Deep red from image */
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      padding: 0.5rem 3rem;
+      text-decoration: none;
+      line-height: 1;
+      letter-spacing: 0.05em;
+      transition: background 0.3s ease;
     }
-    .banner-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+
+    .join-now-rect:hover {
+      background-color: #ff0000;
+    }
+
+    /* Remove old skewed styles */
+    .hero-title-group, .hero-features-list, .percent-text, .bonus-label-text, .feature-row, .feature-icon-box, .hero-cta-btn {
+      display: none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .main-banner {
+        flex-direction: column-reverse;
+        padding: 6rem 1.5rem 2rem;
+        align-items: center;
+        text-align: center;
+      }
+      .hero-content-left {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-title-group {
+        align-items: center;
+      }
+      .hero-image-right {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: -2rem;
+      }
+      .hero-player-img {
+        transform: scale(1);
+        max-width: 400px;
+      }
+      .percent-text {
+        font-size: 8rem;
+      }
+      .bonus-label-text {
+        font-size: 3rem;
+      }
     }
     .btn-large {
       padding: 1rem 2.5rem;
@@ -246,20 +687,18 @@
     
     /* LIGAS - GIRANDO SECTION */
     .ligas-section {
-      background: url('fondo.jpg') center bottom;
-      background-size: cover;
-      padding: 2rem 0 1.5rem;
+      background: #000;
+      padding: 0;
       position: relative;
+      margin-bottom: 0;
+      margin-top: -150px;
+      z-index: 2;
+    }
+    .ligas-section::after {
+      display: none;
     }
     .ligas-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,1) 100%);
-      z-index: 0;
+      display: none;
     }
     .ligas-section > * {
       position: relative;
@@ -309,23 +748,232 @@
       }
     }
     
-    /* PROMOS SECTION */
-    .promos-wrapper {
-      max-width: 1400px;
-      margin: 1.5rem auto 0;
-      padding: 0 1rem;
+    /* OFFERS SECTION */
+    .promo-title-mobile {
+      display: none;
     }
-    .promo-banner-item {
-      background: transparent;
-      padding: 1.5rem;
+    .promo-title-desktop {
+      display: block;
     }
-    .bonus-options {
+    .offers-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0.75rem;
+      gap: 1rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      background: transparent;
+    }
+
+    .offer-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      outline: 1.5px solid #ffffff;
+      outline-offset: -1.5px;
+    }
+
+    .offer-img:hover {
+      transform: translateY(-5px);
+    }
+    /* Hide mobile images on desktop - show text content */
+    .bonus-card .mobile-card-img {
+      display: none;
+    }
+    .bonus-card .desktop-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      position: relative;
+      z-index: 2;
+    }
+    .bonus-card {
+      background: #000;
+      border: 2px solid #ff0000;
+      border-radius: 10px;
+      min-height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Ruby Card Desktop */
+    .ruby-card {
+      background: linear-gradient(180deg, rgba(30,30,30,1) 0%, rgba(10,10,10,1) 100%);
+    }
+    .ruby-card .desktop-content {
+      padding: 1.25rem;
+      align-items: center;
+      text-align: center;
+    }
+    .ruby-card .ruby-logo-section {
+      display: none;
+    }
+    .ruby-card .card-title-big {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem;
+      color: #fff;
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.6rem;
+    }
+    .ruby-card .card-bar-red {
+      display: block;
+      background: #ff0000;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      padding: 0.4rem 1rem;
+      border-radius: 3px;
+      margin-bottom: 0.75rem;
+    }
+    .ruby-card .ruby-bonuses {
+      width: 100%;
+      margin-top: 0;
+    }
+    .ruby-card .ruby-bonus-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.25rem 0;
+      background: transparent;
+      border-bottom: none;
+    }
+    .ruby-card .ruby-percent {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
+      color: #ff0000;
+      line-height: 1;
+    }
+    .ruby-card .ruby-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.02em;
+    }
+    /* Cards 2, 3, 4 Desktop - With Background Images */
+    .crypto-card {
+      background: url('bitcoing back 2.jpg') center center;
+      background-size: cover;
+    }
+    .referral-card {
+      background: url('casino referral.jpg') center center;
+      background-size: cover;
+    }
+    .parlay-card {
+      background: url('nfl .jpg') center center;
+      background-size: cover;
+    }
+    .crypto-card::before,
+    .referral-card::before,
+    .parlay-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.8) 100%);
+      z-index: 1;
+    }
+    .crypto-card .desktop-content,
+    .referral-card .desktop-content,
+    .parlay-card .desktop-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      padding: 1.5rem 1rem;
+      gap: 0.5rem;
+      min-height: 220px;
+    }
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+    .crypto-card .card-title-big,
+    .referral-card .card-title-big,
+    .parlay-card .card-title-big {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8rem;
+      color: #fff;
+      line-height: 0.9;
+      letter-spacing: 0.03em;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      margin-bottom: 0.5rem;
+    }
+    .crypto-card .card-bar-red,
+    .referral-card .card-bar-red,
+    .parlay-card .card-bar-red {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      color: #fff;
+      background: #ff0000;
+      padding: 0.6rem 1.25rem;
+      border-radius: 4px;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(255,0,0,0.4);
+      margin-bottom: 0.5rem;
+    }
+    .crypto-card .highlight-percent,
+    .referral-card .highlight-percent,
+    .parlay-card .highlight-percent {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.1rem;
+      color: #fff;
+      line-height: 1;
+    }
+    .crypto-card .highlight-red,
+    .referral-card .highlight-red,
+    .parlay-card .highlight-red {
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      font-size: 1.1rem;
+    }
+    .crypto-card .card-subtitle-white,
+    .referral-card .card-subtitle-white,
+    .parlay-card .card-subtitle-white {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.95);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+      margin-bottom: 0.75rem;
+      min-height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .join-now-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      color: #fff;
+      background: #ff0000;
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 15px rgba(255,0,0,0.4);
+      transition: all 0.3s ease;
+    }
+    .join-now-btn:hover {
+      background: #cc0000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255,0,0,0.5);
     }
     .promo-banner-item h3 {
-      font-size: 1.5rem;
+      font-size: 2.5rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -333,20 +981,9 @@
       color: #fff;
       text-align: center;
     }
-    .bonus-card {
-      background: linear-gradient(145deg, rgba(20, 20, 20, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
-      border-radius: 12px;
-      padding: 1.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-    }
     .bonus-card:hover {
-      border-color: rgba(255, 0, 0, 0.5);
       transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(255, 0, 0, 0.15);
+      border-color: #ff0000;
     }
     .bonus-header {
       font-size: 1.1rem;
@@ -379,241 +1016,236 @@
       font-weight: 800;
       font-size: 1.1rem;
       min-width: 55px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     }
-    .bonus-label {
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 0.8rem;
-      font-weight: 500;
-      text-align: right;
-    }
+    .card-subtitle-white {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.05em;
+      text-shadow: 0 3px 6px rgba(0, 0, 0, 0.8);
+      text-transform: uppercase;
+    }  
     .bonus-desc {
       font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.8);
+      color: #ffffff;
       line-height: 1.5;
       flex: 1;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
     }
     .highlight-text {
       color: #ff0000;
       font-weight: 700;
     }
-    /* Ruby Card Special */
+    /* Ruby Card Special - Image based */
     .ruby-card {
-      background: url('rollover back.jpg');
-      background-size: cover;
-      background-position: 65% 0%;
-      background-repeat: no-repeat;
       position: relative;
-      border-color: rgba(255, 0, 0, 0.3);
-      text-align: center;
-      justify-content: center;
       overflow: hidden;
-      border-radius: 12px;
+      border-radius: 8px;
     }
-    .ruby-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
-      z-index: 1;
-    }
-    .ruby-card .bonus-header {
-      color: #fff;
-      position: relative;
-      z-index: 2;
-      font-size: 1.8rem;
-      font-weight: 900;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
-      margin-top: 1rem;
-      letter-spacing: 0.05em;
-      text-align: center;
-    }
-    .ruby-card .bonus-list {
-      position: relative;
-      z-index: 2;
-      margin-top: 2rem;
-      text-align: left;
-      display: inline-block;
-    }
-    .ruby-card .bonus-percent {
-      color: #fff;
-      font-size: 1.4rem;
-      font-weight: 800;
-    }
-    .ruby-card .bonus-label {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-    /* Crypto Card Special */
-    .crypto-card {
-      background: url('bitcoing back 2.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      position: relative;
-      border-color: rgba(255, 180, 0, 0.3);
-      text-align: center;
-      justify-content: center;
-      overflow: hidden;
-      border-radius: 12px;
-    }
-    .crypto-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.4);
-      z-index: 1;
-    }
-    .crypto-card:hover {
-      border-color: rgba(255, 180, 0, 0.6);
-      box-shadow: 0 10px 30px rgba(255, 180, 0, 0.15);
-    }
-    .crypto-icon {
-      font-size: 2.5rem;
-      color: #f7931a;
-      margin-bottom: 0.75rem;
-      text-shadow: 0 0 20px rgba(247, 147, 26, 0.5);
-    }
-    .crypto-icon-img {
-      width: 120px;
-      height: 120px;
-      margin-bottom: 1.25rem;
-      object-fit: contain;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-      z-index: 2;
-    }
-    .crypto-card .bonus-header {
-      color: #fff;
-      position: relative;
-      z-index: 2;
-      font-size: 1.6rem;
-      margin-top: 1rem;
-      font-weight: 900;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-    }
-    .crypto-card .bonus-desc {
-      font-size: 1rem;
-      position: relative;
-      z-index: 2;
-    }
-    /* Referral Card Special */
-    .referral-card {
-      background: url('casino referral.jpg');
-      background-size: cover;
-      background-position: center 20%;
-      background-repeat: no-repeat;
-      position: relative;
-      border-color: rgba(255, 0, 0, 0.3);
-      overflow: hidden;
-      border-radius: 12px;
+    .ruby-logo-section {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      text-align: center;
+      margin-bottom: 1rem;
     }
-    .referral-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 1) 100%);
-      z-index: 1;
+    .ruby-card-logo {
+      width: 180px;
+      height: auto;
+      margin-bottom: 0.5rem;
     }
-    .referral-card .bonus-header,
-    .parlay-card .bonus-header {
-      color: rgba(255,255,255,0.6);
-      z-index: 2;
-      font-size: 0.8rem;
+    .ruby-label {
+      font-size: 0.9rem;
+      color: #fff;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .highlight-red {
+      color: #ff0000;
+      font-weight: 900;
+    }
+    .ruby-bonuses {
+      width: 100%;
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .ruby-bonus-item {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.9);
+      padding: 0.6rem 0.75rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.2s ease;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
       font-weight: 600;
-      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .ruby-bonus-item:hover {
+      background: rgba(255, 0, 0, 0.1);
+      border-color: rgba(255, 0, 0, 0.3);
+      transform: translateX(4px);
+    }
+    .ruby-percent {
+      font-weight: 900;
+      color: #ff0000;
+      font-size: 2.5rem;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.8);
+      display: block;
       margin-bottom: 0.25rem;
+      line-height: 1;
     }
-    .referral-card .bonus-desc,
-    .parlay-card .bonus-desc {
-      z-index: 2;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.6);
-      margin-top: 0.5rem;
+    .highlight-percent {
+      font-weight: 900;
+      color: #ff0000;
+      font-size: 5rem;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
+      display: block;
+      margin: 1rem 0;
+      line-height: 0.9;
     }
-    .referral-card .highlight-text,
-    .parlay-card .highlight-text {
-      font-size: 3rem;
+    /* Cards 2, 3, 4 - Clean styling for image-based cards */
+    .crypto-card,
+    .referral-card,
+    .parlay-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .card-title-big {
+      font-size: 2.5rem;
       font-weight: 900;
       color: #ff0000;
       line-height: 1;
-      position: relative;
-      z-index: 2;
-    }
-    .referral-card .bonus-subtitle,
-    .parlay-card .bonus-subtitle {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
       text-transform: uppercase;
-      position: relative;
-      z-index: 2;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+    }
+    .card-bar-red {
+      background: transparent;
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.4rem;
+      padding: 0;
+      border-radius: 0;
+      text-transform: none;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+      box-shadow: none;
+      transition: all 0.3s ease;
+      border: none;
+      line-height: 1.2;
+    }
+    .card-bar-red:hover {
+      background: linear-gradient(135deg, #ff1a1a 0%, #e60000 100%);
+      transform: translateY(-2px);
+      box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        0 4px 8px rgba(0, 0, 0, 0.4),
+        0 0 0 2px rgba(255, 0, 0, 0.4);
     }
     .mobile-break {
       display: none;
     }
-    /* Parlay Card Special */
-    .parlay-card {
-      background: url('nfl .jpg');
-      background-size: cover;
-      background-position: center 20%;
-      background-repeat: no-repeat;
+    
+    /* CASINO BANNER SECTION */
+    .casino-banner-section {
+      background: #000;
+      padding: 3rem 0;
       position: relative;
-      border-color: rgba(255, 0, 0, 0.3);
-      overflow: hidden;
+      z-index: 1;
+      margin: 0;
+    }
+    .casino-games-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 1400px;
+      margin: 3rem auto 0;
+      padding: 0 2rem;
+    }
+    .casino-game-img {
+      width: 100%;
+      height: auto;
       border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .casino-game-img:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 24px rgba(255, 0, 0, 0.4);
+    }
+    .casino-banner-content {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
+      gap: 0;
+      position: relative;
+      padding: 0 2rem;
+    }
+    .casino-banner-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .casino-logo-img {
+      width: 80%;
+      height: auto;
+      display: block;
+      margin-top: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .casino-cta {
+      margin-top: 0;
+      z-index: 10;
+      position: relative;
+      min-width: 280px;
+      padding: 1.2rem 3rem;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      box-shadow: 0 8px 32px rgba(255, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+    .casino-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 48px rgba(255, 0, 0, 0.7);
+    }
+    .casino-banner-img {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 16px;
+      position: relative;
+      margin-bottom: 0;
+      display: block;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    }
+    .casino-banner-text {
       text-align: center;
     }
-    .parlay-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.7) 60%, rgba(0, 0, 0, 1) 100%);
-      z-index: 1;
-    }
-    .parlay-card .bonus-header {
-      color: #fff;
-      position: absolute;
-      bottom: 3rem;
-      left: 0;
-      right: 0;
-      z-index: 2;
-      font-size: 1.4rem;
+    .casino-banner-text h2 {
+      font-size: 4rem;
       font-weight: 900;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+      color: #fff;
+      line-height: 0.9;
+      margin-bottom: 1rem;
     }
-    .parlay-card .bonus-desc {
-      position: absolute;
-      bottom: 0.75rem;
-      left: 0;
-      right: 0;
-      z-index: 2;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.9);
+    .casino-banner-text p {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.7);
     }
         
     /* CASINO/GAMES SECTION */
@@ -734,22 +1366,17 @@
     
     /* WINNERS TABLE SECTION */
     .winners-section {
-      background: url('basket staidum back.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      padding: 2rem 2rem;
+      background: #000;
+      padding: 1rem 2rem 2rem;
+      margin-top: 0;
       position: relative;
+      z-index: 2;
+    }
+    .winners-section::after {
+      display: none;
     }
     .winners-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 1;
+      display: none;
     }
     .winners-section > * {
       position: relative;
@@ -1061,6 +1688,27 @@
       margin-top: 2rem;
       padding-top: 2rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.85rem;
+    }
+    .footer-payment-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .payment-logo {
+      height: 24px;
+      width: auto;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+      filter: brightness(0) invert(1);
+    }
+    .payment-logo:hover {
+      opacity: 1;
     }
     .footer-payments {
       display: flex;
@@ -1117,58 +1765,101 @@
       
       /* Header - Compact */
       .header {
-        padding: 0.6rem 1rem;
-        top: 32px;
+        padding: 0.4rem 1rem 0.3rem;
+        top: 0;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.85) 50%, rgba(0, 0, 0, 0.7) 100%);
+        gap: 0.3rem;
+      }
+      .header-top {
+        padding: 0;
+        align-items: center;
+        min-height: 40px;
+      }
+      .header-bottom {
+        padding: 0;
+        align-items: center;
+        display: none;
+      }
+      .logo-container {
+        align-items: center;
+      }
+      .header-buttons {
+        align-items: center;
+      }
+      .hamburger {
+        align-self: center;
       }
       .logo {
         height: 32px;
       }
+      .tagline-svg {
+        height: 20px;
+      }
+      .logo-container {
+        gap: 0.5rem;
+      }
       .nav-links {
         display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .mobile-menu {
+        display: block;
+      }
+      .mobile-overlay {
+        display: block;
       }
       .header-buttons {
         gap: 0.4rem;
       }
       .btn {
-        padding: 0.45rem 0.8rem;
-        font-size: 0.7rem;
-        border-radius: 4px;
+        padding: 0.5rem 0.6rem;
+        font-size: 0.65rem;
+        border-radius: 20px;
+        width: 80px;
+        white-space: nowrap;
+      }
+      .header-buttons {
+        gap: 0.4rem;
       }
       
       /* Hero - Mobile with Background Image */
       .main-banner {
-        min-height: 420px;
-        padding: 1.5rem 1rem 2rem;
-        margin-top: 75px;
-        flex-direction: column;
-        gap: 1rem;
-        justify-content: center;
-        align-items: flex-start;
-        background: url('hero1.jpg');
-        background-size: cover;
-        background-position: center top;
-        background-repeat: no-repeat;
-        position: relative;
+        min-height: auto;
+        padding: 0;
+        margin-top: 80px;
+        display: block;
+        width: 100%;
+        left: auto;
+        right: auto;
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .hero-banner-full {
+        width: 100%;
       }
       .main-banner::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: 
-          linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0) 100%),
-          linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.8) 100%);
-        z-index: 1;
+        display: none;
       }
       .banner-content {
         text-align: left;
-        max-width: 100%;
+        max-width: 60%;
         position: relative;
         z-index: 2;
-        padding-right: 30%;
-        padding-top: 6rem;
+        padding-right: 0;
+        padding-top: 5rem;
+      }
+      .hero-football-img {
+        display: block !important;
+        position: absolute;
+        right: -5%;
+        bottom: 0;
+        width: 55%;
+        max-width: 280px;
+        height: auto;
+        z-index: 3;
+        filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
       }
       .banner-buttons {
         align-items: stretch;
@@ -1184,31 +1875,73 @@
         display: none;
       }
       .banner-kicker {
-        font-size: 0.6rem;
-        color: #ff0000;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        margin-bottom: 0.75rem;
-        padding: 0.4rem 0.8rem;
-        border-radius: 4px;
-        display: inline-block;
-        background: #fff;
+        display: none;
       }
       .banner-content h1 {
         font-size: 1.8rem;
         line-height: 1.2;
         margin-bottom: 0.75rem;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.6);
       }
       .banner-content h1 .highlight {
-        display: block;
-        font-size: 2.2rem;
+        display: inline-block;
+        color: #ffffff;
+        font-weight: 900;
+        text-shadow: 
+          0 0 15px rgba(255,255,255,0.5),
+          0 4px 12px rgba(0,0,0,0.9);
+        animation: pulse-glow 2s ease-in-out infinite alternate;
+        margin-bottom: 0.75rem;
+        text-align: left;
+      }
+      .banner-content h1 {
+        border: 3px solid #ffffff;
+        border-radius: 20px;
+        padding: 2rem 1.5rem;
+        background: rgba(0,0,0,0.85);
+        backdrop-filter: blur(15px);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      }
+      .banner-content h1 .percent-main {
+        font-size: 4.5rem;
+        font-weight: 900;
         color: #ff0000;
+        letter-spacing: -0.08em;
+        line-height: 0.8;
+        text-shadow: 
+          0 0 30px rgba(255,0,0,0.8),
+          0 4px 20px rgba(0,0,0,0.9),
+          0 0 60px rgba(255,0,0,0.4);
+        animation: pulse-glow 2s ease-in-out infinite alternate;
+        margin-bottom: 0.2rem;
+      }
+      .banner-content h1 .bonus-subtitle {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+        margin-bottom: 0.8rem;
+        white-space: nowrap;
+      }
+      .banner-content h1 .tagline {
+        font-size: 1rem;
+        font-weight: 500;
+        color: rgba(255,255,255,0.9);
+        letter-spacing: 0.01em;
+        line-height: 1.4;
+        text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+        padding-top: 0.5rem;
+        border-top: 1px solid rgba(255,255,255,0.2);
+        width: 100%;
       }
       .banner-content p {
-        font-size: 0.8rem;
-        opacity: 0.85;
-        margin-bottom: 1rem;
-        line-height: 1.5;
+        display: none;
       }
       .banner-buttons {
         flex-direction: column;
@@ -1233,7 +1966,7 @@
       
       /* Ligas Section */
       .ligas-section {
-        padding: 1rem 0;
+        padding: 0.5rem 0 0.25rem;
       }
       .leagues-wrapper {
         padding: 0;
@@ -1263,12 +1996,195 @@
       .bonus-options {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
         gap: 0.5rem;
+        padding-bottom: 0;
+        margin: 0;
+        padding-left: 0;
+        padding-right: 0;
+        overflow-x: visible;
       }
+      
+      .bonus-options::-webkit-scrollbar {
+        display: none;
+      }
+      
       .bonus-card {
-        padding: 0.75rem;
-        border-radius: 10px;
-        min-height: 160px;
+        flex: none;
+        width: auto;
+        min-height: 280px; /* More height to prevent squeezing */
+        padding: 1rem !important;
+        margin-right: 0;
+      }
+      
+      .bonus-card:hover {
+        transform: none;
+      }
+      
+      .promo-title-mobile {
+        display: block;
+      }
+      .promo-title-desktop {
+        display: none;
+      }
+      
+      .offers-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 2rem;
+        padding: 0 1rem;
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      
+      .offer-img {
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        outline: 1px solid rgba(255, 255, 255, 0.3);
+        outline-offset: -1px;
+        transform: scale(1.15);
+      }
+      
+      .join-now-stack {
+        position: static;
+        transform: none;
+        width: 100%;
+        max-width: none;
+        align-items: center;
+        gap: 0.5rem;
+        text-align: center;
+        margin: 0 auto;
+      }
+      
+      .btn-join-now-overlay {
+        width: auto;
+        font-size: clamp(1rem, 4vw, 1.4rem);
+        padding: 0.85rem 2.5rem;
+        letter-spacing: 0.12em;
+        border-radius: 50px;
+      }
+      
+      .main-banner {
+        margin-top: 50px;
+        padding: 0;
+        background: #000000;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+      }
+
+      .banner-content-new {
+        justify-content: flex-end;
+        align-items: center;
+        text-align: center;
+        padding: 3rem 1.25rem 2.5rem;
+      }
+
+      .hero-background-img {
+        display: none;
+      }
+
+      .hero-mobile-content {
+        display: none !important;
+      }
+
+      .hero-mobile-pills {
+        max-width: 320px;
+        margin: 0 auto;
+      }
+
+      .hero-mobile-img {
+        display: block;
+        width: 100vw;
+        height: auto;
+        max-width: none;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+      }
+
+      .join-now-stack {
+        display: flex;
+        position: absolute;
+        left: 50%;
+        bottom: calc(12vh + 40px);
+        transform: translateX(-50%);
+        width: 80vw;
+        max-width: 500px;
+        align-items: center;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          transform: translateX(-50%) scale(1);
+          box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4);
+        }
+        50% {
+          transform: translateX(-50%) scale(1.02);
+          box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0);
+        }
+      }
+
+      .btn-join-now-overlay {
+        font-size: 1.8rem;
+        padding: 1rem 3rem;
+        letter-spacing: 0.15em;
+        border-radius: 20px;
+        line-height: 1.3;
+        font-weight: 800;
+      }
+  
+      /* Special handling for Ruby card in grid */
+      .ruby-card {
+        transform: none !important;
+        padding: 0.75rem !important;
+        justify-content: center;
+      }
+
+      /* Compact Typography for Mobile Grid */
+      .card-title-big {
+        font-size: 1.4rem !important; /* Larger for better readability */
+        margin-bottom: 0.5rem !important;
+        line-height: 1.1 !important;
+        white-space: nowrap !important;
+      }
+      
+      .card-bar-red {
+        font-size: 0.7rem !important;
+        padding: 0.5rem 0.4rem !important;
+        margin-bottom: 0.4rem !important;
+        white-space: nowrap !important;
+        line-height: 1.2;
+        min-height: auto !important;
+      }
+      
+      .ruby-percent {
+        font-size: 1.2rem !important;
+      }
+      
+      .highlight-percent {
+        font-size: 1.1rem !important;
+      }
+      
+      .card-subtitle-white {
+        font-size: 0.65rem !important;
+        line-height: 1.2;
+      }
+      
+      .ruby-bonuses {
+        gap: 0.1rem !important;
+        margin-top: 0.3rem !important;
+      }
+      
+      .ruby-bonus-item {
+        font-size: 0.6rem !important;
+        padding: 0.15rem 0.2rem !important;
       }
       .bonus-header {
         font-size: 0.8rem;
@@ -1300,130 +2216,96 @@
         margin-bottom: 0.25rem;
       }
       
-      /* Special Cards Mobile */
+      /* Special Cards Mobile - Image Based Design */
+      .bonus-options {
+        display: grid;
+        grid-template-columns: 42% 58%;
+        gap: 0.25rem;
+        padding: 0;
+      }
+      
       .ruby-card, .crypto-card, .referral-card, .parlay-card {
-        min-height: 160px;
-        border-radius: 10px;
-        overflow: hidden;
-      }
-      .referral-card, .parlay-card {
-        background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%) !important;
-        border: 1px solid rgba(255, 0, 0, 0.2);
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 0.75rem !important;
-      }
-      .referral-card::before, .parlay-card::before {
-        display: none;
+        min-height: auto;
+        border-radius: 0;
+        overflow: visible !important;
+        padding: 0 !important;
+        border: none !important;
+        background: none !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        box-shadow: none !important;
+        transform: none !important;
       }
       
-      /* Ruby Card Mobile */
-      .ruby-card {
-        background-position: 80% 20%;
-        padding: 0.75rem !important;
+      /* Hide desktop content on mobile */
+      .desktop-content {
+        display: none !important;
       }
-      .ruby-card::before {
-        background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.3) 100%);
-      }
-      .ruby-card .bonus-header {
-        font-size: 0.75rem;
-        margin-top: 0.25rem;
-        margin-bottom: 0.4rem;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.9);
-        text-align: center;
-      }
-      .ruby-card .bonus-list {
-        margin-top: 0;
+      
+      /* Show mobile card images */
+      .mobile-card-img {
+        display: block !important;
         width: 100%;
-      }
-      .ruby-card .bonus-list li {
-        padding: 0.15rem 0;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      .ruby-card .bonus-percent {
-        font-size: 1rem;
-        color: #ff0000;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.9);
-        min-width: 42px;
-        font-weight: 900;
-      }
-      .ruby-card .bonus-label {
-        font-size: 0.55rem;
-        font-weight: 600;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.9);
-        color: #fff;
-        text-align: left;
-        line-height: 1.2;
+        height: auto;
       }
       
-      /* Crypto Card Mobile */
-      .crypto-card {
-        padding: 0.75rem;
-        justify-content: flex-start;
-      }
-      .crypto-card .bonus-header {
-        font-size: 0.8rem;
-        margin-top: 0.25rem;
-        margin-bottom: 0;
-      }
-      .crypto-card .bonus-desc {
-        font-size: 0.6rem;
-        margin-top: auto;
-        padding-bottom: 0.5rem;
-      }
-      .crypto-card .highlight-text {
-        font-size: 1rem;
-        display: block;
-        margin: 0.25rem 0;
-        font-weight: 900;
+      /* Ruby card spans 3 rows */
+      .ruby-card {
+        grid-row: 1 / span 3;
       }
       
-      /* Referral & Parlay Cards Mobile - Clean Design */
-      .mobile-break {
-        display: none;
+      /* Remove dark overlay on mobile cards */
+      .crypto-card::before,
+      .referral-card::before,
+      .parlay-card::before {
+        display: none !important;
       }
-      .referral-card .bonus-header,
-      .parlay-card .bonus-header {
-        font-size: 0.6rem;
-        color: rgba(255,255,255,0.5);
-        font-weight: 600;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        margin-bottom: 0.25rem;
+      
+      /* Casino Banner Mobile */
+      .casino-banner-section {
+        padding: 0 0 2rem;
       }
-      .referral-card .highlight-text,
-      .parlay-card .highlight-text {
-        font-size: 2.5rem;
-        font-weight: 900;
-        color: #ff0000;
-        line-height: 1;
-        margin: 0;
+      .casino-games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 0 1rem;
+        margin-top: 2rem;
       }
-      .referral-card .bonus-subtitle,
-      .parlay-card .bonus-subtitle {
-        font-size: 0.9rem;
-        font-weight: 800;
-        color: #fff;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        margin-bottom: 0.5rem;
-      }
-      .referral-card .bonus-desc,
-      .parlay-card .bonus-desc {
-        font-size: 0.5rem;
-        color: rgba(255,255,255,0.5);
+      .casino-banner-content {
+        flex-direction: column;
+        gap: 0;
         text-align: center;
+        padding: 0;
+        max-width: 100%;
+      }
+      .casino-banner-img {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 0;
+        border-radius: 0;
+      }
+      .casino-cta {
+        width: auto;
+        max-width: 280px;
+        margin: 1.5rem auto 0;
+        padding: 1rem 3rem;
+        font-size: 1rem;
+        min-width: auto;
+        border-radius: 8px;
+      }
+      .casino-banner-text h2 {
+        font-size: 2.5rem;
+      }
+      .casino-banner-text p {
+        font-size: 1rem;
       }
       
       /* Casino Section */
-      .casino-section, .faq-section, .winners-section {
+      .casino-section, .faq-section {
         padding: 1.25rem 0.75rem;
+      }
+      .winners-section {
+        padding: 0.5rem 0.75rem 1.25rem;
       }
       .section-title {
         font-size: 1.1rem;
@@ -1530,9 +2412,7 @@
       
       /* Winners Table */
       .winners-section {
-        background: url('basket staidum back.jpg');
-        background-size: cover;
-        background-position: center;
+        background: #000;
       }
       .winners-table-wrapper {
         margin: 0.75rem auto 0;
@@ -1607,6 +2487,13 @@
         font-size: 0.65rem;
         margin-bottom: 0.5rem;
       }
+      .footer-payment-logos {
+        gap: 0.4rem;
+        margin-top: 1rem;
+      }
+      .payment-logo {
+        height: 14px;
+      }
       .footer-payments {
         gap: 0.4rem;
       }
@@ -1619,9 +2506,9 @@
     /* RESPONSIVE - SMALL MOBILE */
     @media (max-width: 480px) {
       .main-banner {
-        min-height: 340px;
+        min-height: 306px;
         padding: 1.25rem 0.75rem;
-        margin-top: 70px;
+        margin-top: 28px;
         background-position: center 20%;
       }
       .banner-content h1 {
@@ -1679,83 +2566,203 @@
         font-size: 0.9rem;
       }
     }
+    /* NEW HERO DESIGN */
+    .banner-content-new {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1rem;
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-title-new {
+      display: flex;
+      flex-direction: column;
+      line-height: 0.85;
+      margin-bottom: 2.5rem;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.9);
+      position: relative;
+    }
+
+    .percent-huge {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(8rem, 20vw, 16rem);
+      font-weight: 400;
+      color: #ffffff !important;
+      letter-spacing: -0.02em;
+      background: none !important;
+      background-clip: unset !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: #ffffff !important;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+      margin-bottom: 0;
+      z-index: 2;
+    }
+
+    .bonus-text-new {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 400;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: -0.1em;
+      z-index: 1;
+      text-shadow: 0 4px 15px rgba(0,0,0,1);
+    }
+
+    .hero-subfeatures {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .subfeature {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 800;
+      color: #ffffff !important;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: transparent !important;
+      padding: 1rem 2rem;
+      border-radius: 99px;
+      border: 1px solid #ffffff !important;
+      backdrop-filter: none;
+      box-shadow: none;
+      transition: transform 0.3s ease;
+    }
+    
+    .subfeature:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,0,0,0.5);
+    }
+
+    .icon-red {
+      color: #ff0000;
+      width: 28px;
+      height: 28px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-subfeatures {
+        flex-direction: column;
+        gap: 0.8rem;
+        width: 100%;
+        max-width: 300px;
+      }
+      .subfeature {
+        width: 100%;
+        justify-content: center;
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+      }
+      .banner-content-new {
+        padding: 4rem 1rem 3rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <!-- TOP PROMO BANNER -->
-  <div class="promo-banner">
-    <div class="promo-scroll">
-      <div class="promo-item">
-        <span class="promo-icon">💰</span>
-        <span>PAYOUTS</span>
-      </div>
-      <div class="promo-item">
-        <span class="promo-icon">⚡</span>
-        <span>SAME DAY</span>
-        <span>WITHDRAWALS</span>
-      </div>
-      <div class="promo-item">
-        <span class="promo-highlight">200%</span>
-        <span>WELCOME BONUS</span>
-      </div>
-      <div class="promo-item">
-        <span class="promo-highlight">$250M+</span>
-        <span>WON ON RUBY WAGER</span>
-      </div>
-      <div class="promo-item">
-        <span class="promo-highlight">10,000X</span>
-        <span>PAYOUTS</span>
-      </div>
-      <!-- Duplicate for seamless loop -->
-      <div class="promo-item">
-        <span class="promo-icon">💰</span>
-        <span>PAYOUTS</span>
-      </div>
-      <div class="promo-item">
-        <span class="promo-icon">⚡</span>
-        <span>SAME DAY</span>
-        <span>WITHDRAWALS</span>
-      </div>
-      <div class="promo-item">
-        <span class="promo-highlight">200%</span>
-        <span>WELCOME BONUS</span>
-      </div>
-      <div class="promo-item">
-        <span class="promo-highlight">$250M+</span>
-        <span>WON ON RUBY WAGER</span>
-      </div>
-      <div class="promo-item">
-        <span class="promo-highlight">10,000X</span>
-        <span>PAYOUTS</span>
-      </div>
-    </div>
-  </div>
-
+  <!-- TOP PROMO BANNER removed -->
   <!-- HEADER -->
   <header class="header">
-    <img src="logo.png" alt="Ruby Wager" class="logo">
-    <nav class="nav-links">
-      <a href="#home">HOME</a>
-      <a href="#promos">PROMOS</a>
-      <a href="#casino">CASINO</a>
-      <a href="#banking">BANKING</a>
-      <a href="#about">ABOUT</a>
-    </nav>
-    <div class="header-buttons">
-      <button class="btn btn-outline">LOGIN</button>
-      <button class="btn btn-primary">JOIN NOW</button>
+    <div class="header-top">
+      <div class="logo-container">
+        <img src="logo.png" alt="Ruby Wager" class="logo">
+        <img src="You play, we pay.svg" alt="You play, we pay" class="tagline-svg">
+      </div>
+      <div class="header-buttons">
+        <button class="btn btn-outline">LOGIN</button>
+        <button class="btn btn-primary">JOIN NOW</button>
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="header-bottom">
+      <nav class="nav-links">
+      <a href="#home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        HOME
+      </a>
+      <a href="#promos">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+        PROMOS
+      </a>
+      <a href="#casino">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7.5 18c-.83 0-1.5-.67-1.5-1.5S6.67 15 7.5 15s1.5.67 1.5 1.5S8.33 18 7.5 18zm0-9C6.67 9 6 8.33 6 7.5S6.67 6 7.5 6 9 6.67 9 7.5 8.33 9 7.5 9zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm0-9c-.83 0-1.5-.67-1.5-1.5S15.67 6 16.5 6s1.5.67 1.5 1.5S17.33 9 16.5 9z"/></svg>
+        CASINO
+      </a>
+      <a href="#banking">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+        BANKING
+      </a>
+      <a href="#about">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        ABOUT
+      </a>
+      </nav>
     </div>
   </header>
 
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-overlay"></div>
+  
+  <!-- Mobile Menu -->
+  <nav class="mobile-menu">
+    <a href="#home" onclick="toggleMobileMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      HOME
+    </a>
+    <a href="#promos" onclick="toggleMobileMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+      PROMOS
+    </a>
+    <a href="#casino" onclick="toggleMobileMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7.5 18c-.83 0-1.5-.67-1.5-1.5S6.67 15 7.5 15s1.5.67 1.5 1.5S8.33 18 7.5 18zm0-9C6.67 9 6 8.33 6 7.5S6.67 6 7.5 6 9 6.67 9 7.5 8.33 9 7.5 9zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm0-9c-.83 0-1.5-.67-1.5-1.5S15.67 6 16.5 6s1.5.67 1.5 1.5S17.33 9 16.5 9z"/></svg>
+      CASINO
+    </a>
+    <a href="#banking" onclick="toggleMobileMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+      BANKING
+    </a>
+    <a href="#about" onclick="toggleMobileMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      ABOUT
+    </a>
+  </nav>
+
   <!-- MAIN BANNER -->
   <section class="main-banner">
-    <div class="banner-content">
-      <div class="banner-kicker">SAME DAY PAYOUTS - FAST & SECURE</div>
-      <h1>Play. Win.<br><span class="highlight">Get Paid Fast.</span></h1>
-      <p>Bet sports, casino and more with fast, secure same-day payouts. Ruby Wager combines aggressive bonuses with a transparent payout policy.</p>
-      <div class="banner-buttons">
-        <button class="btn btn-primary btn-large">CLAIM YOUR BONUS</button>
-        <button class="btn btn-outline btn-large">VIEW PROMOTIONS</button>
+    <img src="banner desktop.png" alt="" class="hero-background-img">
+    <img src="main banner mobile.png" alt="Ruby Wager Mobile" class="hero-mobile-img">
+    <div class="banner-content-new">
+      <div class="hero-mobile-content">
+        <p class="hero-mobile-eyebrow">SIGN-UP BONUS</p>
+        <p class="hero-mobile-percent">200%</p>
+        <p class="hero-mobile-subtitle">CRYPTO FRIENDLY</p>
+        <p class="hero-mobile-tagline">Wherever You Are, The Action Follows.</p>
+        <div class="hero-mobile-pills">
+          <span class="hero-mobile-pill">Same-Day Payouts</span>
+          <span class="hero-mobile-pill">Cryptofriendly</span>
+        </div>
+      </div>
+      <div class="join-now-stack">
+        <button class="btn-join-now-overlay">JOIN NOW</button>
       </div>
     </div>
   </section>
@@ -1782,52 +2789,56 @@
         <img src="la-liga.png" alt="La Liga" class="league-logo" loading="lazy">
         <img src="UEFA.png" alt="UEFA" class="league-logo" loading="lazy">
         <img src="UFC.png" alt="UFC" class="league-logo" loading="lazy">
+        <!-- Third set for seamless infinite loop -->
+        <img src="NFL.png" alt="NFL" class="league-logo" loading="lazy">
+        <img src="NBA.png" alt="NBA" class="league-logo" loading="lazy">
+        <img src="MLB.png" alt="MLB" class="league-logo" loading="lazy">
+        <img src="MLS.png" alt="MLS" class="league-logo" loading="lazy">
+        <img src="premier-league.png" alt="Premier League" class="league-logo" loading="lazy">
+        <img src="la-liga.png" alt="La Liga" class="league-logo" loading="lazy">
+        <img src="UEFA.png" alt="UEFA" class="league-logo" loading="lazy">
+        <img src="UFC.png" alt="UFC" class="league-logo" loading="lazy">
       </div>
     </div>
     
     <!-- Promos -->
     <div class="promos-wrapper">
       <div class="promo-banner-item">
-        <h3>Choose Your Free Play Bonus</h3>
-        <div class="bonus-options">
-          <!-- Card 1: Ruby Rewards -->
-          <div class="bonus-card ruby-card">
-            <div class="bonus-header">RUBY REWARDS</div>
-            <ul class="bonus-list">
-              <li><span class="bonus-percent">200%</span> <span class="bonus-label">Sign Up Freeplay Bonus</span></li>
-              <li><span class="bonus-percent">100%</span> <span class="bonus-label">Freeplay Bonus</span></li>
-              <li><span class="bonus-percent">30%</span> <span class="bonus-label">Cash Bonus</span></li>
-              <li><span class="bonus-percent">20%</span> <span class="bonus-label">Cash Bonus</span></li>
-            </ul>
-          </div>
-          <!-- Card 2: Crypto Friendly -->
-          <div class="bonus-card crypto-card">
-            <div class="bonus-header">CRYPTO FRIENDLY!</div>
-            <img src="bitcoin .png" alt="Bitcoin" class="crypto-icon-img">
-            <div class="bonus-desc">Get an extra <span class="highlight-text">10% freeplay</span> on every crypto deposit</div>
-          </div>
-          <!-- Card 3: Referral -->
-          <div class="bonus-card referral-card">
-            <div class="bonus-header">REFERRAL BONUS</div>
-            <div class="highlight-text">10%</div>
-            <div class="bonus-subtitle">LIFETIME</div>
-            <div class="bonus-desc">Rewards on all referred action</div>
-          </div>
-          <!-- Card 4: Parlay Boost -->
-          <div class="bonus-card parlay-card">
-            <div class="bonus-header">PARLAY BOOST</div>
-            <div class="highlight-text">20%</div>
-            <div class="bonus-subtitle">MORE</div>
-            <div class="bonus-desc">On 6-leg NFL/NCAA parlays</div>
-          </div>
+        <!-- <h3 class="promo-title-desktop">RUBY WAGER PROMOTIONS</h3>
+        <h3 class="promo-title-mobile">RUBY WAGER PROMOTIONS</h3> -->
+        <div class="offers-grid">
+          <img src="offers/RW-1.png?v=4" alt="Ruby Rewards Offer" class="offer-img">
+          <img src="offers/RW-2.png?v=4" alt="Crypto Friendly Offer" class="offer-img">
+          <img src="offers/RW-3.png?v=4" alt="Network Rewards Offer" class="offer-img">
+          <img src="offers/RW-4.png?v=4" alt="Parlay Boost Offer" class="offer-img">
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ONLINE CASINO BANNER -->
+  <section class="casino-banner-section">
+    <div class="casino-banner-content">
+      <img src="slots-banner.png" alt="Slots Banner" class="casino-banner-img">
+      <img src="slots-logo.png" alt="Slots Logo" class="casino-logo-img">
+    </div>
+    
+    <!-- Casino Games Grid -->
+    <div class="casino-games-grid">
+      <img src="01.png" alt="Casino Game 1" class="casino-game-img">
+      <img src="02.png" alt="Casino Game 2" class="casino-game-img">
+      <img src="03.png" alt="Casino Game 3" class="casino-game-img">
+      <img src="04.png" alt="Casino Game 4" class="casino-game-img">
+      <img src="05.png" alt="Casino Game 5" class="casino-game-img">
+      <img src="06.png" alt="Casino Game 6" class="casino-game-img">
+      <img src="07.png" alt="Casino Game 7" class="casino-game-img">
+      <img src="08.png" alt="Casino Game 8" class="casino-game-img">
+    </div>
+  </section>
+
   <!-- WINNERS TABLE SECTION -->
   <section class="winners-section">
-    <h2 class="section-title">Recent Big Winners</h2>
+    <h2 class="section-title">RUBY WINNERS</h2>
     <div class="winners-table-wrapper">
       <table class="winners-table">
         <thead>
@@ -2000,19 +3011,68 @@
         <p>18+ Play Responsibly. Gambling can be addictive – please bet within your limits.</p>
         <p>&copy; 2025 Ruby Wager. All rights reserved.</p>
         
-        <div class="footer-payments">
-          <span class="payment-chip">VISA</span>
-          <span class="payment-chip">Mastercard</span>
-          <span class="payment-chip">Bitcoin</span>
-          <span class="payment-chip">Ethereum</span>
-          <span class="payment-chip">Skrill</span>
-          <span class="payment-chip">Neteller</span>
+        <div class="footer-payment-logos">
+          <img src="bitcoin.png" alt="Bitcoin" class="payment-logo">
+          <img src="litecoin.png" alt="Litecoin" class="payment-logo">
+          <img src="tether.png" alt="Tether" class="payment-logo">
+          <img src="cash-app.png" alt="Cash App" class="payment-logo">
+          <img src="venmo.png" alt="Venmo" class="payment-logo">
+          <img src="zelle.png" alt="Zelle" class="payment-logo">
         </div>
       </div>
     </div>
   </footer>
 
   <script>
+    // Wait for DOM to be ready
+    (function() {
+      'use strict';
+      
+      // Mobile menu toggle function
+      window.toggleMobileMenu = function() {
+        const hamburger = document.querySelector('.hamburger');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const overlay = document.querySelector('.mobile-overlay');
+        
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        if (mobileMenu.classList.contains('active')) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
+        }
+      };
+      
+      // Setup event listeners when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+      
+      function init() {
+        const hamburger = document.querySelector('.hamburger');
+        const overlay = document.querySelector('.mobile-overlay');
+        
+        // Hamburger click
+        if (hamburger) {
+          hamburger.addEventListener('click', window.toggleMobileMenu);
+        }
+        
+        // Overlay click to close
+        if (overlay) {
+          overlay.addEventListener('click', function() {
+            if (this.classList.contains('active')) {
+              window.toggleMobileMenu();
+            }
+          });
+        }
+      }
+    })();
+
     // Tab switching functionality
     function openTab(evt, tabName) {
       const tabContents = document.getElementsByClassName('tab-content');
@@ -2080,5 +3140,6 @@
     // Generate winners on page load
     generateWinners();
   </script>
+<script>lucide.createIcons();</script>
 </body>
 </html>
