@@ -569,11 +569,11 @@
     @keyframes pulseDesktop {
       0%, 100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4);
+        opacity: 1;
       }
       50% {
         transform: scale(1.02);
-        box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0);
+        opacity: 0.9;
       }
     }
 
@@ -584,21 +584,21 @@
       font-weight: 900 !important;
       padding: clamp(0.7rem, 1.6vw, 1rem) clamp(2.2rem, 4.5vw, 4.5rem);
       border-radius: 20px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.15em;
       line-height: 1.2;
       background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
       border: 3px solid #ffffff;
       color: #ffffff;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 6px 25px rgba(255, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
       text-transform: uppercase;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
     .btn-join-now-overlay:hover {
       background: linear-gradient(135deg, #ff3333 0%, #ff0000 100%);
       transform: translateY(-2px);
-      box-shadow: 0 8px 35px rgba(255, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
     }
 
     .percent-huge {
@@ -2189,20 +2189,22 @@
         display: flex;
         position: absolute;
         left: 50%;
-        bottom: calc(12vh + 40px);
+        bottom: calc(15vh + 40px);
         transform: translateX(-50%);
         width: 80vw;
         max-width: 500px;
         align-items: center;
         animation: pulse 2s ease-in-out infinite;
+        box-shadow: none !important;
       }
       
       .btn-join-now-overlay {
         width: auto;
-        font-size: clamp(1rem, 4vw, 1.4rem);
+        font-size: clamp(1.2rem, 5vw, 1.6rem);
         padding: 0.85rem 2.5rem;
         letter-spacing: 0.12em;
         border-radius: 50px;
+        box-shadow: none !important;
       }
       
       .main-banner {
@@ -2263,16 +2265,17 @@
         max-width: 500px;
         align-items: center;
         animation: pulse 2s ease-in-out infinite;
+        box-shadow: none !important;
       }
 
       @keyframes pulse {
         0%, 100% {
           transform: translateX(-50%) scale(1);
-          box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4);
+          opacity: 1;
         }
         50% {
           transform: translateX(-50%) scale(1.02);
-          box-shadow: 0 0 10px 5px rgba(255, 0, 0, 0);
+          opacity: 0.9;
         }
       }
 
@@ -3044,13 +3047,10 @@
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          Are there withdrawal limits?
+          Withdrawal Limits
         </button>
         <div class="faq-answer">
-          Yes. Ruby Wager allows up to $15,000 per week in total payouts, broken down as follows:<br>
-          • Up to $10,000 per week via cryptocurrency<br>
-          • Up to $5,000 per week via wallet payments<br><br>
-          These limits help ensure fast, secure, and consistent payment processing for all players.
+          At Ruby Wager, we keep payouts simple and reliable. Players may withdraw up to $10,000 per week, ensuring fast and secure access to winnings.
         </div>
       </div>
 
@@ -3118,12 +3118,31 @@
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          What are the rollover requirements?
+          Rollover Requirements
         </button>
         <div class="faq-answer">
-          Rollover requirements are calculated as: (Bonus + Deposit) × Bonus Multiplier. Only pregame straight wagers count toward rollover requirements.<br><br>
-          The following do NOT count toward rollover: Live betting, Parlays, Teasers, Props, Futures, and Halftime bets.<br><br>
-          Rollover requirements must be fully completed before any withdrawal.
+          <strong>Rollover requirements are calculated as follows:</strong><br>
+          (Deposit + Bonus) × Bonus Multiplier<br><br>
+          
+          Only pregame straight wagers count toward rollover requirements.<br><br>
+          
+          <strong>The following wager types do NOT count toward rollover:</strong><br>
+          • Live betting<br>
+          • Parlays<br>
+          • Teasers<br>
+          • Proposition (Prop) bets<br>
+          • Futures<br>
+          • Halftime bets<br><br>
+          
+          All rollover requirements must be fully completed before any withdrawal can be processed.<br><br>
+          
+          <strong>Important Rollover Calculation Example</strong><br>
+          When wagering on pregame straight bets, only the potential win amount is applied toward rollover—not the total risk.<br><br>
+          
+          <strong>Example:</strong><br>
+          If a player risks $180 to win $100, only $100 will be credited toward the rollover requirement.<br><br>
+          
+          This rule applies to all wagers with odds where the risk exceeds the potential payout.
         </div>
       </div>
 
