@@ -584,9 +584,10 @@
     .btn-join-now-overlay {
       width: 100%;
       font-family: Impact, 'Arial Black', 'Haettenschweiler', sans-serif !important;
-      font-size: clamp(1.5rem, 3vw, 45px);
+      font-size: clamp(2.5rem, 5vw, 65px);
       font-weight: 900 !important;
       -webkit-text-stroke: 0.5px white;
+      white-space: nowrap;
       padding: clamp(0.7rem, 1.6vw, 1rem) clamp(2.2rem, 4.5vw, 4.5rem);
       border-radius: 20px;
       letter-spacing: 0.12em;
@@ -2228,7 +2229,8 @@
       
       .join-now-mobile .btn-join-now-overlay {
         width: 100%;
-        font-size: clamp(1.6rem, 6.5vw, 2.4rem);
+        font-size: clamp(1.8rem, 7vw, 2.8rem);
+        white-space: nowrap;
         padding: clamp(0.9rem, 2.5vw, 1.2rem) clamp(2rem, 5vw, 3rem);
         letter-spacing: 0.1em;
         border-radius: 15px;
@@ -3383,6 +3385,7 @@
     
     // Generate winners on page load
     generateWinners();
+
   </script>
 <script>lucide.createIcons();</script>
 </body>
