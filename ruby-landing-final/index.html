@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Ruby Wager Landing</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <link rel="preload" href="images/sports-banner-desktopo.png" as="image" fetchpriority="high">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <!-- TOP PROMO BANNER removed -->
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-container">
+      <a href="#home" class="logo-container" style="text-decoration: none; cursor: pointer;">
+        <img src="images/logo.png" alt="Ruby Wager" class="logo">
+        <img src="images/you-play-we-pay.svg" alt="You play, we pay" class="tagline-svg">
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+          </svg>
+          HOME
+        </a>
+        <a href="#promos">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z" />
+          </svg>
+          PROMOS
+        </a>
+        <a href="#casino">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7.5 18c-.83 0-1.5-.67-1.5-1.5S6.67 15 7.5 15s1.5.67 1.5 1.5S8.33 18 7.5 18zm0-9C6.67 9 6 8.33 6 7.5S6.67 6 7.5 6 9 6.67 9 7.5 8.33 9 7.5 9zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm0-9c-.83 0-1.5-.67-1.5-1.5S15.67 6 16.5 6s1.5.67 1.5 1.5S17.33 9 16.5 9z" />
+          </svg>
+          CASINO
+        </a>
+
+        <a href="#faqs">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
+          </svg>
+          FAQs
+        </a>
+      </nav>
+
+      <div class="header-right">
+        <div class="header-buttons">
+          <button class="btn btn-outline" onclick="openAuthModal('login')">LOGIN</button>
+          <button class="btn btn-primary" onclick="openAuthModal('register')">PLAY NOW</button>
+        </div>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-overlay"></div>
+
+  <!-- Mobile Menu -->
+  <nav class="mobile-menu">
+    <a href="#home" onclick="toggleMobileMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+      </svg>
+      HOME
+    </a>
+    <a href="#promos" onclick="toggleMobileMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z" />
+      </svg>
+      PROMOS
+    </a>
+    <a href="#casino" onclick="toggleMobileMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7.5 18c-.83 0-1.5-.67-1.5-1.5S6.67 15 7.5 15s1.5.67 1.5 1.5S8.33 18 7.5 18zm0-9C6.67 9 6 8.33 6 7.5S6.67 6 7.5 6 9 6.67 9 7.5 8.33 9 7.5 9zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm0-9c-.83 0-1.5-.67-1.5-1.5S15.67 6 16.5 6s1.5.67 1.5 1.5S17.33 9 16.5 9z" />
+      </svg>
+      CASINO
+    </a>
+
+    <a href="#faqs" onclick="toggleMobileMenu()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
+      </svg>
+      FAQs
+    </a>
+  </nav>
+
+  <!-- MAIN BANNER - HERO SLIDER -->
+  <section id="home" class="main-banner">
+    <!-- Hero Slider -->
+    <div class="hero-slider" id="heroSlider">
+      <div class="hero-slider-track" id="heroSliderTrack">
+
+        <!-- Slide 1: Original Ruby Hero (RUBY-HERO-2.png) -->
+        <div class="hero-slide active">
+          <div class="hero-desktop-container">
+            <img src="images/banner hero desktop.png" alt="Ruby Wager Casino" class="hero-background-img">
+            <div class="hero-text-center">
+              <img src="images/text hero desktop.png" alt="200% Sign Up Bonus — Same Day Payouts" class="hero-text-img">
+            </div>
+            <div class="join-now-stack">
+              <button class="btn-join-now-overlay" onclick="openAuthModal('register')">PLAY NOW</button>
+            </div>
+          </div>
+          <div class="hero-mobile-container">
+            <div class="mobile-hero-wrapper">
+              <img src="images/RUBY MOBILE HERO 1.png" alt="Ruby Wager Mobile" class="hero-mobile-img">
+              <img src="images/SIGN UP BONUS MOBILE.png" alt="Sign Up Bonus" class="mobile-overlay-bonus">
+            </div>
+            <div class="join-now-mobile">
+              <button class="btn-join-now-overlay" onclick="openAuthModal('register')">PLAY NOW</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: ruby-hero.png -->
+        <div class="hero-slide">
+          <div class="hero-desktop-container">
+            <img src="images/ruby-hero.png" alt="Ruby Wager" class="hero-background-img">
+            <div class="hero-text-center">
+              <img src="images/TEXT HERO 2.png" alt="Ruby Wager Promo" class="hero-text-img">
+            </div>
+            <div class="join-now-stack">
+              <button class="btn-join-now-overlay" onclick="openAuthModal('register')">PLAY NOW</button>
+            </div>
+          </div>
+          <div class="hero-mobile-container">
+            <img src="images/main-banner-mobile.png" alt="Ruby Wager Mobile" class="hero-mobile-img">
+            <div class="join-now-mobile">
+              <button class="btn-join-now-overlay" onclick="openAuthModal('register')">PLAY NOW</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Slider Dots -->
+      <div class="hero-slider-dots" id="heroSliderDots">
+        <button class="hero-dot active" data-slide="0" aria-label="Slide 1"></button>
+        <button class="hero-dot" data-slide="1" aria-label="Slide 2"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGAS - GIRANDO SECTION -->
+  <section id="promos" class="ligas-section">
+    <!-- Leagues Infinite Scroll -->
+    <div class="leagues-wrapper">
+      <div class="leagues-grid">
+        <img src="images/leagues/NFL.png" alt="NFL" class="league-logo" loading="lazy">
+        <img src="images/leagues/NBA.png" alt="NBA" class="league-logo" loading="lazy">
+        <img src="images/leagues/MLB.png" alt="MLB" class="league-logo" loading="lazy">
+        <img src="images/leagues/MLS.png" alt="MLS" class="league-logo" loading="lazy">
+        <img src="images/leagues/premier-league.png" alt="Premier League" class="league-logo" loading="lazy">
+        <img src="images/leagues/la-liga.png" alt="La Liga" class="league-logo" loading="lazy">
+        <img src="images/leagues/UEFA.png" alt="UEFA" class="league-logo" loading="lazy">
+        <img src="images/leagues/UFC.png" alt="UFC" class="league-logo" loading="lazy">
+        <!-- Duplicate for seamless loop -->
+        <img src="images/leagues/NFL.png" alt="NFL" class="league-logo" loading="lazy">
+        <img src="images/leagues/NBA.png" alt="NBA" class="league-logo" loading="lazy">
+        <img src="images/leagues/MLB.png" alt="MLB" class="league-logo" loading="lazy">
+        <img src="images/leagues/MLS.png" alt="MLS" class="league-logo" loading="lazy">
+        <img src="images/leagues/premier-league.png" alt="Premier League" class="league-logo" loading="lazy">
+        <img src="images/leagues/la-liga.png" alt="La Liga" class="league-logo" loading="lazy">
+        <img src="images/leagues/UEFA.png" alt="UEFA" class="league-logo" loading="lazy">
+        <img src="images/leagues/UFC.png" alt="UFC" class="league-logo" loading="lazy">
+        <!-- Third set for seamless infinite loop -->
+        <img src="images/leagues/NFL.png" alt="NFL" class="league-logo" loading="lazy">
+        <img src="images/leagues/NBA.png" alt="NBA" class="league-logo" loading="lazy">
+        <img src="images/leagues/MLB.png" alt="MLB" class="league-logo" loading="lazy">
+        <img src="images/leagues/MLS.png" alt="MLS" class="league-logo" loading="lazy">
+        <img src="images/leagues/premier-league.png" alt="Premier League" class="league-logo" loading="lazy">
+        <img src="images/leagues/la-liga.png" alt="La Liga" class="league-logo" loading="lazy">
+        <img src="images/leagues/UEFA.png" alt="UEFA" class="league-logo" loading="lazy">
+        <img src="images/leagues/UFC.png" alt="UFC" class="league-logo" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Promos -->
+    <div class="promos-wrapper">
+      <div class="promo-banner-item">
+        <!-- <h3 class="promo-title-desktop">RUBY WAGER PROMOTIONS</h3>
+        <h3 class="promo-title-mobile">RUBY WAGER PROMOTIONS</h3> -->
+        <div class="offers-grid">
+          <img src="images/PARLAY-BOOST.png" alt="Parlay Boost Offer" class="offer-img"
+            onclick="openAuthModal('register')" style="cursor: pointer;">
+          <img src="images/NETWORK-PAYS.png" alt="Lifetime Rewards Offer" class="offer-img"
+            onclick="openAuthModal('register')" style="cursor: pointer;">
+          <img src="images/CRYPTO.png" alt="Crypto Friendly Offer" class="offer-img" onclick="openAuthModal('register')"
+            style="cursor: pointer;">
+          <img src="images/RUBY-REWARDS.png" alt="Ruby Rewards Offer" class="offer-img"
+            onclick="openAuthModal('register')" style="cursor: pointer;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A BETTER WAY TO BET SECTION -->
+  <section class="better-bet-section">
+    <div class="better-bet-container">
+      <h2 class="better-bet-title">A Better Way to Bet</h2>
+      <div class="better-bet-cards">
+        <!-- Card 1: Premium Experience -->
+        <div class="better-bet-card">
+          <div class="better-bet-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+            </svg>
+          </div>
+          <p class="better-bet-text">
+            <strong>At Ruby Wager, we specialize in premium betting experiences and true VIP service.</strong> Whether
+            you enjoy sports betting, online casino games, live dealers, or major global events, our platform is built
+            for players who expect reliability, speed, and personal attention.
+          </p>
+        </div>
+        <!-- Card 2: 24/7 VIP Support -->
+        <div class="better-bet-card">
+          <div class="better-bet-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+              <path
+                d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-3 12h-2v-2h2v2zm0-4h-2V6h2v4zm-4 4h-2v-2h2v2zm0-4h-2V6h2v4z" />
+            </svg>
+            <span class="icon-badge">24/7</span>
+          </div>
+          <p class="better-bet-text">
+            Have a question or need assistance with a bet, bonus, or account? Our support team is available
+            <strong>24/7</strong> to make sure everything runs smoothly whenever you need us.
+          </p>
+        </div>
+        <!-- Card 3: Fast & Secure Payouts -->
+        <div class="better-bet-card">
+          <div class="better-bet-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+              <path
+                d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" />
+            </svg>
+          </div>
+          <p class="better-bet-text">
+            Win big? Get paid fast. No unnecessary delays or complications — request your crypto payout or cash
+            withdrawal anytime. At Ruby Wager, <strong>your winnings are always your call.</strong>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ONLINE CASINO BANNER -->
+  <section id="casino" class="casino-banner-section">
+    <div class="casino-banner-content">
+      <img src="images/SLOTS 3.jpg" alt="Casino Slots Banner" class="casino-banner-img">
+      <img src="images/slots-logo.png" alt="Slots Logo" class="casino-logo-img">
+    </div>
+
+    <!-- Casino Games Grid -->
+    <div class="casino-games-grid">
+      <img src="images/casino-games/01.png" alt="Casino Game 1" class="casino-game-img"
+        onclick="openAuthModal('register')">
+      <img src="images/casino-games/02.png" alt="Casino Game 2" class="casino-game-img"
+        onclick="openAuthModal('register')">
+      <img src="images/casino-games/03.png" alt="Casino Game 3" class="casino-game-img"
+        onclick="openAuthModal('register')">
+      <img src="images/casino-games/04.png" alt="Casino Game 4" class="casino-game-img"
+        onclick="openAuthModal('register')">
+      <img src="images/casino-games/05.png" alt="Casino Game 5" class="casino-game-img"
+        onclick="openAuthModal('register')">
+      <img src="images/casino-games/06.png" alt="Casino Game 6" class="casino-game-img"
+        onclick="openAuthModal('register')">
+      <img src="images/casino-games/07.png" alt="Casino Game 7" class="casino-game-img"
+        onclick="openAuthModal('register')">
+      <img src="images/casino-games/08.png" alt="Casino Game 8" class="casino-game-img"
+        onclick="openAuthModal('register')">
+      <!-- New Games -->
+      <img src="images/triple-bonus.jpg" alt="Triple Bonus" class="casino-game-img desktop-only"
+        onclick="openAuthModal('register')">
+      <img src="images/wild-rocks.jpg" alt="Wild Rocks" class="casino-game-img desktop-only"
+        onclick="openAuthModal('register')">
+      <img src="images/wonderful-lamp.jpg" alt="Wonderful Lamp" class="casino-game-img desktop-only"
+        onclick="openAuthModal('register')">
+      <img src="images/xtreme.jpg" alt="Xtreme" class="casino-game-img desktop-only"
+        onclick="openAuthModal('register')">
+    </div>
+  </section>
+
+  <!-- WINNERS TABLE SECTION -->
+  <section id="winners" class="winners-section">
+    <h2 class="section-title">RUBY WINNERS</h2>
+    <div class="winners-table-wrapper">
+      <table class="winners-table">
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Game</th>
+            <th>Amount</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody id="winners-tbody">
+          <!-- Winners will be generated by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section id="faqs" class="faq-section">
+    <h2 class="section-title">FAQ</h2>
+
+    <div class="faq-tabs">
+      <button class="tab-button active" onclick="openTab(event, 'banking')">Banking</button>
+      <button class="tab-button" onclick="openTab(event, 'support')">Support</button>
+      <button class="tab-button" onclick="openTab(event, 'bonus-rules')">Bonus Rules</button>
+    </div>
+
+    <!-- BANKING TAB -->
+    <div id="banking" class="tab-content active">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What are the deposit options?
+        </button>
+        <div class="faq-answer">
+          Ruby Wager offers multiple fast and secure deposit options to fit your preference. We accept major
+          cryptocurrencies including Bitcoin (BTC), USDT, Litecoin (LTC), and Ethereum (ETH).<br><br>
+          We also support wallet-based deposits such as Venmo, Zelle, PayPal, Cash App, and Apple Pay. For wallet
+          deposits, players must request current deposit instructions from their assigned agent before sending funds, as
+          details may change for security reasons.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How fast are payouts at Ruby Wager?
+        </button>
+        <div class="faq-answer">
+          Ruby Wager is proud to offer same-day payouts, one of our strongest advantages.<br><br>
+          Payouts are processed Monday through Saturday, from 9:00 AM to 2:00 PM Eastern Time. To receive a same-day
+          payout, your request must be submitted before 2:00 PM ET.<br><br>
+          All playthrough requirements and bonus conditions must be fully completed before a withdrawal can be approved.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Withdrawal Limits
+        </button>
+        <div class="faq-answer">
+          At Ruby Wager, we keep payouts simple and reliable. Players may withdraw up to $10,000 per week, ensuring fast
+          and secure access to winnings.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you charge withdrawal fees?
+        </button>
+        <div class="faq-answer">
+          • All crypto payouts are 100% free — no fees, ever.<br>
+          • Wallet payouts (Venmo, PayPal, Cash App, etc.) are subject to a 3% processing fee.<br><br>
+          Crypto withdrawals are always the most efficient and cost-effective option.
+        </div>
+      </div>
+    </div>
+
+    <!-- SUPPORT TAB -->
+    <div id="support" class="tab-content">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I contact customer support?
+        </button>
+        <div class="faq-answer">
+          You can reach our support team via live chat (available 24/7), email at support@rubywager.com, or through our
+          contact form. VIP members also have access to WhatsApp and Messenger support.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I verify my account?
+        </button>
+        <div class="faq-answer">
+          You'll need one government-issued photo ID (driver's license, state ID, or passport) and proof of address
+          (utility bill, bank statement) dated within the last 3 months. Upload through your account settings or send to
+          our verification team via live chat.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What if I forget my password?
+        </button>
+        <div class="faq-answer">
+          Click "Forgot Password" on the login page and enter your registered email address. You'll receive a password
+          reset link within minutes. If you don't receive it, check your spam folder or contact support.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can I change my account details?
+        </button>
+        <div class="faq-answer">
+          You can update your email, phone number, and address in your account settings. However, your name and date of
+          birth cannot be changed as they must match your verification documents. Contact support if you need
+          assistance.
+        </div>
+      </div>
+    </div>
+
+    <!-- BONUS RULES TAB -->
+    <div id="bonus-rules" class="tab-content">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I claim my welcome bonus?
+        </button>
+        <div class="faq-answer">
+          Bonuses must be claimed at the time of deposit. Players may claim a bonus directly through the cashier or have
+          it manually credited by an agent. Bonuses cannot be added after a deposit is completed.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Rollover Requirements
+        </button>
+        <div class="faq-answer">
+          <strong>Rollover requirements are calculated as follows:</strong><br>
+          (Deposit + Bonus) × Bonus Multiplier<br><br>
+
+          Only pregame straight wagers count toward rollover requirements.<br><br>
+
+          <strong>The following wager types do NOT count toward rollover:</strong><br>
+          • Live betting<br>
+          • Parlays<br>
+          • Teasers<br>
+          • Proposition (Prop) bets<br>
+          • Futures<br>
+          • Halftime bets<br><br>
+
+          All rollover requirements must be fully completed before any withdrawal can be processed.<br><br>
+
+          <strong>Important Rollover Calculation Example</strong><br>
+          When wagering on pregame straight bets, only the potential win amount is applied toward rollover—not the total
+          risk.<br><br>
+
+          <strong>Example:</strong><br>
+          If a player risks $180 to win $100, only $100 will be credited toward the rollover requirement.<br><br>
+
+          This rule applies to all wagers with odds where the risk exceeds the potential payout.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can I have multiple bonuses at once?
+        </button>
+        <div class="faq-answer">
+          Only one active bonus is allowed at a time. If a player wishes to redeem a new bonus while still holding a
+          balance from a previous promotion, management approval is required.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do bonuses expire?
+        </button>
+        <div class="faq-answer">
+          Bonuses do not expire. Players may take as much time as needed to complete rollover requirements, as long as
+          wagering rules are followed.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="about">
+    <div class="footer-content">
+      <img src="images/logo.png" alt="Ruby Wager" class="footer-logo" loading="lazy">
+
+
+      <div class="footer-meta">
+        <p>18+ Play Responsibly. Gambling can be addictive – please bet within your limits.</p>
+        <p>&copy; 2025 Ruby Wager. All rights reserved.</p>
+
+        <div class="footer-payment-logos">
+          <img src="images/crypto/bitcoin.png" alt="Bitcoin" class="payment-logo">
+          <img src="images/crypto/litecoin.png" alt="Litecoin" class="payment-logo">
+          <img src="images/crypto/tether.png" alt="Tether" class="payment-logo">
+          <img src="images/crypto/cash-app.png" alt="Cash App" class="payment-logo">
+          <img src="images/crypto/venmo.png" alt="Venmo" class="payment-logo">
+          <img src="images/crypto/zelle.png" alt="Zelle" class="payment-logo">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="auth-modal">
+    <div class="auth-modal-content">
+      <span class="auth-close" onclick="closeAuthModal()">&times;</span>
+      <img src="images/logo.png" alt="Ruby Wager" class="auth-logo">
+      <h2 class="auth-title">Login</h2>
+
+      <form id="loginForm" class="auth-form" action="https://wager.rubywager.com/redirectlogin.php" method="post">
+        <label for="login-username">Username</label>
+        <input name="username" type="text" id="login-username" placeholder="Username" class="auth-input" required>
+
+        <label for="login-password">Password</label>
+        <input type="password" name="password" id="login-password" placeholder="Password" class="auth-input" required>
+
+        <input type="hidden" name="multiaccount" id="multiaccount" value="1">
+
+        <div class="auth-forgot">
+          <a href="https://rubywager.com/#forgot" target="_blank">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="auth-submit-btn">Login</button>
+      </form>
+
+      <div class="auth-switch">
+        Don't have an account? <a onclick="openAuthModal('register')">Join Now</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div id="registerModal" class="auth-modal">
+    <div class="auth-modal-content auth-modal-register">
+      <span class="auth-close" onclick="closeAuthModal()">&times;</span>
+      <img src="images/logo.png" alt="Ruby Wager" class="auth-logo">
+      <h2 class="auth-title">Register</h2>
+
+      <form id="registerForm" class="auth-form" method="post"
+        action="https://rubywager.com/sites/rubywager.com/createAccount.php">
+        <input type="text" name="email" placeholder="Email" class="auth-input" required>
+
+        <input type="text" name="email2" placeholder="Confirm Email" class="auth-input" required>
+
+        <input type="password" name="password" maxlength="10" placeholder="Password (10 characters max)"
+          class="auth-input" required>
+
+        <input type="password" name="password2" maxlength="10" placeholder="Repeat Password" class="auth-input"
+          required>
+
+        <div class="auth-row">
+          <input type="text" name="firstname" maxlength="30" placeholder="First Name" class="auth-input auth-half"
+            required>
+          <input type="text" name="lastname" maxlength="30" placeholder="Last Name" class="auth-input auth-half"
+            required>
+        </div>
+
+        <input type="tel" name="phone" placeholder="Phone Number" class="auth-input" required>
+
+        <input type="text" name="promo" placeholder="Promo Code (optional)" class="auth-input">
+
+        <div class="auth-recaptcha">
+          <div id="register-recaptcha"></div>
+        </div>
+
+        <p class="auth-disclaimer">
+          NOTE: Robotic or automatic wagering platforms, wise play and past post wagers or any other violation or misuse
+          of our promotions is not allowed. By entering your number, you agree to receive mobile messages.
+        </p>
+
+        <button type="submit" class="auth-submit-btn">Register</button>
+      </form>
+
+      <div class="auth-switch">
+        Already have an account? <a onclick="openAuthModal('login')">Login</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+
+</html>

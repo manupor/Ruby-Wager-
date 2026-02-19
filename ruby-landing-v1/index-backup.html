@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ruby Wager Landing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <style>
+    :root {
+      --ruby: #ff0000;
+      --ruby-dark: #cc0000;
+      --bg: #000000;
+      --text: #ffffff;
+      --muted: #999999;
+      --accent: #ff0000;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top, #1a0000 0, #000000 50%, #000 100%);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+    main {
+      position: relative;
+      z-index: 5;
+      background: radial-gradient(circle at top, #1a0000 0, #000000 50%, #000 100%);
+    }
+    a { color: inherit; text-decoration: none; }
+    img, video, svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    img {
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+    }
+    .promo-banner {
+      position: fixed;
+      inset-inline: 0;
+      top: 0;
+      z-index: 50;
+      background: #000;
+      border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+      overflow: hidden;
+      height: 40px;
+      display: flex;
+      align-items: center;
+    }
+    .promo-content {
+      display: flex;
+      white-space: nowrap;
+      animation: scrollPromo 30s linear infinite;
+    }
+    .promo-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0 2rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .promo-highlight {
+      color: #ff0000;
+    }
+    .promo-icon {
+      width: 18px;
+      height: 18px;
+      color: #ff0000;
+      flex-shrink: 0;
+    }
+    @keyframes scrollPromo {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    .nav {
+      position: fixed;
+      inset-inline: 0;
+      top: 40px;
+      z-index: 40;
+      background: rgba(20, 20, 20, 0.98);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+    }
+    .brand-logo {
+      height: 36px;
+      width: auto;
+      filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.6));
+    }
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: transparent;
+      border: none;
+      z-index: 60;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+    .mobile-menu {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      max-height: 0;
+      background: rgba(10, 10, 10, 0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      z-index: 35;
+      padding: 0 1.5rem;
+      overflow: hidden;
+      display: none;
+    }
+    .mobile-menu.active {
+      max-height: 500px;
+      padding: 2rem 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .mobile-menu {
+        display: block;
+      }
+    }
+    .mobile-menu-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 2rem;
+    }
+    .mobile-menu-links a {
+      padding: 1rem 0;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: color 0.3s ease;
+    }
+    .mobile-menu-links a:hover {
+      color: #ff0000;
+    }
+    .mobile-menu-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .mobile-menu-buttons .btn {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+    .nav-links a {
+      color: var(--muted);
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: #ff0000;
+    }
+    .nav-links a.active {
+      color: var(--text);
+    }
+    .nav-buttons {
+      display: flex;
+      gap: 0.8rem;
+    }
+    .hamburger {
+      display: none;
+    }
+    .btn {
+      border-radius: 999px;
+      padding: 0.38rem 1.1rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      background: none;
+      color: var(--text);
+      transition: all 0.16s;
+    }
+    .btn-outline {
+      border-color: rgba(255, 255, 255, 0.3);
+      color: var(--muted);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #ff0000, #cc0000);
+      box-shadow: 0 0 24px rgba(255, 0, 0, 0.7);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 32px rgba(255, 0, 0, 0.95);
+      filter: brightness(1.05);
+    }
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem;
+    }
+    section.hero {
+      max-width: 100%;
+      padding: 0;
+    }
+    .hero {
+      min-height: calc(60vh + 80px);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: calc(80px + 2rem) 3rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      background-image: url('hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.65) 70%, rgba(0,0,0,0.85) 100%);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: left;
+      padding-left: 4rem;
+      max-width: 700px;
+      margin-top: 1rem;
+    }
+    .hero-kicker {
+      display: inline-block;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #ff0000;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .hero-title {
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+    .hero-title span {
+      color: #ff0000;
+      display: block;
+    }
+    .hero-text {
+      color: rgba(255,255,255,0.9);
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      max-width: 550px;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .hero-cta .btn {
+      font-size: 0.95rem;
+      padding: 0.9rem 2.5rem;
+      font-weight: 700;
+    }
+    .card-section {
+      text-align: center;
+      padding: 2rem 0;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+    .section-subtitle {
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      line-height: 1.6;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      text-align: left;
+    }
+    .card {
+      background: linear-gradient(135deg, rgba(20,20,20,0.9) 0%, rgba(0,0,0,0.95) 100%);
+      border-radius: 24px;
+      padding: 2.5rem;
+      border: 1px solid rgba(255, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .promo-image {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 0, 0, 0.4);
+      box-shadow: 0 12px 40px rgba(255, 0, 0, 0.2);
+    }
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #fff;
+      font-weight: 700;
+    }
+    .card p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    .winners-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.95rem;
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+    .winners-list::-webkit-scrollbar {
+      width: 8px;
+    }
+    .winners-list::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+    .winners-list::-webkit-scrollbar-thumb {
+      background: rgba(255, 0, 0, 0.6);
+      border-radius: 10px;
+    }
+    .winners-list::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 0, 0, 0.8);
+    }
+    .winner-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+    }
+    .winner-item:nth-child(odd) {
+      background: radial-gradient(circle at left, rgba(255,255,255,0.06), transparent 60%);
+    }
+    .winner-item:nth-child(even) {
+      background: radial-gradient(circle at right, rgba(255,255,255,0.04), transparent 60%);
+    }
+    .winner-main {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      flex: 1;
+      text-align: left;
+    }
+    .winner-name {
+      font-weight: 600;
+      color: #fff;
+    }
+    .winner-game {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.85rem;
+    }
+    .winner-amount {
+      font-weight: 700;
+      color: #ff0000;
+      font-size: 0.95rem;
+      white-space: nowrap;
+      text-align: right;
+      min-width: 90px;
+    }
+    .top-winners-wrapper {
+      margin-top: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .top-winners-wrapper .card {
+      grid-column: span 2;
+      width: 100%;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .top-winners-wrapper .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+    }
+    .featured-leagues {
+      background: rgba(10,10,10,0.95);
+      padding: 2.5rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 0, 0, 0.1);
+    }
+    .featured-leagues-title {
+      text-align: center;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+    .leagues-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(2rem, 5vw, 4rem);
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .league-logo {
+      height: 45px;
+      width: auto;
+      opacity: 0.6;
+      filter: grayscale(100%) brightness(1.2);
+      transition: all 0.3s ease;
+    }
+    .league-logo:hover {
+      opacity: 1;
+      filter: grayscale(0%) brightness(1);
+      transform: scale(1.1);
+    }
+    footer {
+      position: relative;
+      margin: 0;
+      margin-bottom: 30vh;
+      padding: 2.5rem 1.5rem 2.75rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      background: #000;
+      border-radius: 0 0 24px 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+      z-index: 10;
+    }
+    footer > * {
+      max-width: 1120px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .footer-meta {
+      max-width: 900px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .footer-responsible {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+    }
+    .footer-payments {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+      align-items: center;
+      font-size: 0.75rem;
+    }
+    .footer-payments-label {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.55);
+      margin-right: 0.5rem;
+    }
+    .footer-payment-chip {
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: radial-gradient(circle at top, rgba(255,255,255,0.08), rgba(0,0,0,0.9));
+      color: rgba(255,255,255,0.85);
+    }
+    .info-tabs-section {
+      background: #000;
+      padding: 4rem 1.5rem;
+      border-top: 1px solid rgba(255, 0, 0, 0.1);
+      position: relative;
+      z-index: 5;
+      width: 100%;
+    }
+    .info-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      border-bottom: 2px solid rgba(255, 0, 0, 0.2);
+    }
+    .tab-button {
+      flex: 1;
+      padding: 1.2rem 2rem;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-bottom: 3px solid transparent;
+    }
+    .tab-button:hover {
+      color: var(--text);
+      background: rgba(255, 0, 0, 0.05);
+    }
+    .tab-button.active {
+      color: #fff;
+      background: rgba(255, 0, 0, 0.15);
+      border-bottom-color: #ff0000;
+    }
+    .tab-content {
+      display: none;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      width: 100%;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .tab-content > * {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .tab-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 0;
+    }
+    .faq-question {
+      width: 100%;
+      padding: 1.5rem 3rem 1.5rem 0;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-question:hover {
+      color: #ff0000;
+    }
+    .faq-question::after {
+      content: "▼";
+      position: absolute;
+      right: 0;
+      color: #ff0000;
+      font-size: 1rem;
+      transition: transform 0.3s ease;
+    }
+    .faq-question.active::after {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .faq-answer.active {
+      max-height: 500px;
+      padding-bottom: 1.5rem;
+    }
+    .footer-logo-section {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30vh;
+      min-height: 320px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 0;
+    }
+    .footer-logo-section::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 85%;
+      max-width: 700px;
+      height: 75%;
+      background-image: url('ruby12.png');
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      opacity: 0.5;
+      filter: drop-shadow(0 0 40px rgba(0,0,0,0.3));
+      z-index: 0;
+      pointer-events: none;
+    }
+    /* ========================================
+       TABLET RESPONSIVE STYLES (901px - 1200px)
+       ======================================== */
+    @media (min-width: 901px) and (max-width: 1200px) {
+      .hero {
+        padding: calc(80px + 2rem) 2.5rem 2rem;
+      }
+      .hero-content {
+        padding-left: 2rem;
+      }
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      section {
+        padding: 3rem 2rem;
+      }
+    }
+    /* ========================================
+       MOBILE RESPONSIVE STYLES (≤ 900px)
+       Optimized for all mobile devices
+       ======================================== */
+    @media (max-width: 900px) {
+      .hero {
+        min-height: calc(70vh + 75px);
+        padding: calc(75px + 2rem) 2rem 3rem;
+        justify-content: center;
+      }
+      .hero-content {
+        text-align: center;
+        padding-left: 0;
+        max-width: 100%;
+        margin-top: 0;
+      }
+      .hero-kicker {
+        font-size: 0.7rem;
+        margin-bottom: 1rem;
+      }
+      .hero-title {
+        font-size: 2.4rem;
+        margin-bottom: 1.2rem;
+        line-height: 1.1;
+      }
+      .hero-text {
+        font-size: 1rem;
+        margin: 0 auto 2rem;
+        max-width: 90%;
+        line-height: 1.65;
+      }
+      .hero-cta {
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+      .hero-cta .btn {
+        width: 100%;
+        max-width: 300px;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+      .featured-leagues {
+        padding: 3rem 1.5rem;
+      }
+      .featured-leagues-title {
+        font-size: 0.75rem;
+        margin-bottom: 2rem;
+      }
+      .leagues-grid {
+        gap: 2rem;
+      }
+      .league-logo {
+        height: 35px;
+      }
+      section {
+        padding: 4rem 1.5rem;
+      }
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+        padding: 0 1rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .card {
+        padding: 2rem 1.5rem;
+      }
+      .card h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.8rem;
+      }
+      .card p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      .promo-banner {
+        height: 35px;
+      }
+      .promo-item {
+        font-size: 0.7rem;
+        gap: 0.5rem;
+        padding: 0 1.5rem;
+      }
+      .promo-icon {
+        width: 16px;
+        height: 16px;
+      }
+      .nav {
+        top: 35px;
+      }
+      .mobile-menu {
+        top: 75px;
+      }
+      .nav-inner {
+        padding: 0.8rem 1rem;
+      }
+      .brand-logo {
+        height: 28px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .nav-buttons {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      footer {
+        padding: 2rem 1.5rem;
+        margin-bottom: 35vh;
+        border-radius: 0 0 16px 16px;
+      }
+      footer > * {
+        max-width: 100%;
+      }
+      .footer-logo-section {
+        height: 35vh;
+        min-height: 280px;
+      }
+      .footer-logo-section::before {
+        width: 95%;
+        max-width: 500px;
+        height: 70%;
+        opacity: 0.6;
+      }
+      .footer-meta {
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .footer-responsible {
+        font-size: 0.7rem;
+      }
+      .footer-payments {
+        font-size: 0.65rem;
+      }
+      .footer-payment-chip {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.65rem;
+      }
+      .info-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+        border-bottom: none;
+      }
+      .tab-button {
+        padding: 1.2rem 0.6rem;
+        font-size: 0.75rem;
+        white-space: normal;
+        text-align: center;
+        line-height: 1.3;
+        min-height: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 3px solid rgba(255, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.3);
+      }
+      .tab-button:nth-child(2n) {
+        border-right: none;
+      }
+      .tab-button.active {
+        border-bottom-color: #ff0000;
+        border-bottom-width: 4px;
+        background: rgba(255, 0, 0, 0.08);
+      }
+      .tab-content {
+        padding: 0 1.5rem;
+      }
+      .tab-title {
+        font-size: 1.6rem;
+      }
+      .faq-question {
+        font-size: 1rem;
+        padding-right: 2.5rem;
+      }
+      .top-winners-wrapper {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .top-winners-wrapper .card {
+        grid-column: span 1;
+      }
+      .winners-list {
+        max-height: 300px;
+      }
+    }
+    /* ========================================
+       EXTRA SMALL DEVICES (≤ 375px)
+       iPhone SE, Galaxy Fold, etc.
+       ======================================== */
+    @media (max-width: 375px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-text {
+        font-size: 0.9rem;
+      }
+      .tab-button {
+        font-size: 0.7rem;
+        padding: 1rem 0.5rem;
+        min-height: 70px;
+      }
+      .section-title {
+        font-size: 1.75rem;
+      }
+      .card {
+        padding: 1.75rem 1.25rem;
+      }
+      .promo-banner {
+        height: 32px;
+      }
+      .promo-item {
+        font-size: 0.65rem;
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- PROMOTIONAL BANNER -->
+  <div class="promo-banner">
+    <div class="promo-content">
+      <div class="promo-item">
+        <span class="promo-highlight">$250M+</span> WON ON RUBY WAGER
+        <svg class="promo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>
+      </div>
+      <div class="promo-item">
+        <span class="promo-highlight">10,000X</span> PAYOUTS
+        <svg class="promo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m15 15-3-3"/><circle cx="15" cy="15" r="2"/></svg>
+      </div>
+      <div class="promo-item">
+        <span class="promo-highlight">SAME DAY</span> WITHDRAWALS
+        <svg class="promo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div class="promo-item">
+        <span class="promo-highlight">200%</span> WELCOME BONUS
+        <svg class="promo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect width="20" height="5" x="2" y="7"/><line x1="12" x2="12" y1="22" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+      </div>
+      <div class="promo-item">
+        <span class="promo-highlight">$250M+</span> WON ON RUBY WAGER
+        <svg class="promo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg>
+      </div>
+      <div class="promo-item">
+        <span class="promo-highlight">10,000X</span> PAYOUTS
+        <svg class="promo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m15 15-3-3"/><circle cx="15" cy="15" r="2"/></svg>
+      </div>
+      <div class="promo-item">
+        <span class="promo-highlight">SAME DAY</span> WITHDRAWALS
+        <svg class="promo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div class="promo-item">
+        <span class="promo-highlight">200%</span> WELCOME BONUS
+        <svg class="promo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect width="20" height="5" x="2" y="7"/><line x1="12" x2="12" y1="22" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="brand">
+        <img src="logo.png" alt="Ruby Wager" class="brand-logo">
+      </a>
+      <nav class="nav-links">
+        <a href="#hero" class="active">Home</a>
+        <a href="#promos">Promos</a>
+        <a href="#casino">Casino</a>
+        <a href="#banking">Banking</a>
+        <a href="#about">About</a>
+      </nav>
+      <div class="nav-buttons">
+        <button class="btn btn-outline">Login</button>
+        <button class="btn btn-primary">Join Now</button>
+      </div>
+      <button class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <nav class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-links">
+      <a href="#hero" onclick="closeMenu()">Home</a>
+      <a href="#promos" onclick="closeMenu()">Promotions</a>
+      <a href="#casino" onclick="closeMenu()">Casino</a>
+      <a href="#banking" onclick="closeMenu()">Banking</a>
+      <a href="#about" onclick="closeMenu()">About Us</a>
+    </div>
+    <div class="mobile-menu-buttons">
+      <button class="btn btn-outline">Login</button>
+      <button class="btn btn-primary">Join Now</button>
+    </div>
+  </nav>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="hero-content">
+        <div class="hero-kicker">SAME DAY PAYOUTS • FAST & SECURE</div>
+        <h1 class="hero-title">
+          Play. Win. <span>Get Paid Fast.</span>
+        </h1>
+        <p class="hero-text">
+          Bet sports, casino and more with fast, secure same‑day payouts.
+          Ruby Wager combines aggressive bonuses with a transparent payout policy.
+        </p>
+        <div class="hero-cta">
+          <button class="btn btn-primary" onclick="scrollToSection('promos')">Claim Your Bonus</button>
+          <button class="btn btn-outline" onclick="scrollToSection('promos')">View Promotions</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED LEAGUES -->
+    <div class="featured-leagues">
+      <div class="featured-leagues-title">Available Sports</div>
+      <div class="leagues-grid">
+        <img src="NFL.png" alt="NFL" class="league-logo">
+        <img src="NBA.png" alt="NBA" class="league-logo">
+        <img src="MLB.png" alt="MLB" class="league-logo">
+        <img src="MLS.png" alt="MLS" class="league-logo">
+        <img src="premier-league.png" alt="Premier League" class="league-logo">
+        <img src="la-liga.png" alt="La Liga" class="league-logo">
+        <img src="UEFA.png" alt="UEFA" class="league-logo">
+        <img src="UFC.png" alt="UFC" class="league-logo">
+      </div>
+    </div>
+
+    <section id="promos">
+      <div class="card-section">
+        <h2 class="section-title">Promotions & Bonuses</h2>
+        <p class="section-subtitle">
+          Unlock aggressive sign‑up, reload and crypto bonuses designed to maximize your bankroll with clear, straightforward terms.
+        </p>
+        <div class="card-grid">
+          <div class="card">
+            <img src="20.png" alt="200% Sign-Up Bonus" class="promo-image">
+            <h3>200% Sign-Up Bonus</h3>
+            <p>New players only, on qualifying first deposits with competitive rollover terms.</p>
+            <button class="btn btn-primary">Join Now</button>
+          </div>
+          <div class="card">
+            <img src="125.png" alt="125% Reload Bonus" class="promo-image">
+            <h3>125% Reload Bonus</h3>
+            <p>Ongoing bonus on eligible sports reloads to keep your bankroll strong.</p>
+            <button class="btn btn-primary">Join Now</button>
+          </div>
+          <div class="card">
+            <img src="200.png" alt="10% Extra Crypto" class="promo-image">
+            <h3>10% Extra Crypto</h3>
+            <p>Additional freeplay on approved crypto deposits for Bitcoin, Ethereum and more.</p>
+            <button class="btn btn-primary">Join Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="casino">
+      <div class="card-section">
+        <h2 class="section-title">Casino Lobby & Live Dealers</h2>
+        <p class="section-subtitle">
+          From live roulette and blackjack to modern slots, Ruby Wager delivers a curated casino experience with professional dealers and HD streaming.
+        </p>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Live Casino</h3>
+            <p>Professional dealers streaming 24/7 with European & American Roulette, Blackjack, Baccarat.</p>
+          </div>
+          <div class="card">
+            <h3>Slots & Jackpots</h3>
+            <p>Classic and modern slots, progressive jackpots and frequent new releases.</p>
+          </div>
+        </div>
+
+        <div class="top-winners-wrapper">
+          <div class="card">
+            <h3>Top Winners</h3>
+            <p>Latest big wins from Ruby Wager players, refreshed every visit.</p>
+            <ul id="topWinnersList" class="winners-list"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="banking">
+      <div class="card-section">
+        <h2 class="section-title">Deposits & Same-Day Payouts</h2>
+        <p class="section-subtitle">
+          Banking methods built for serious players with fast deposits, secure withdrawals, and transparent same-day payout policy.
+        </p>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Ruby Wager Deposits</h3>
+            <p>Major e-wallets, cards and popular cryptocurrencies. Instant funding with no internal fees.</p>
+          </div>
+          <div class="card">
+            <h3>Payout Policy</h3>
+            <p>Most approved payout requests processed same business day. Crypto typically under 24 hours.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="card-section">
+        <h2 class="section-title">A Player-First Sportsbook & Casino</h2>
+        <p class="section-subtitle">
+          Ruby Wager is a trusted, high-performance betting platform built by experienced players who know what matters most.
+        </p>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Who We Are</h3>
+            <p>Created by professional gamblers who understand fast payouts, sharp odds and bankroll management.</p>
+          </div>
+          <div class="card">
+            <h3>Why Bet With Us</h3>
+            <p>Same-day payouts, big bonuses, competitive limits and a secure, fast platform.</p>
+          </div>
+          <div class="card">
+            <h3>Customer Service</h3>
+            <p>Live chat and email 7 days/week, VIP messaging via WhatsApp & Messenger for select players.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- INFO TABS SECTION -->
+  <section class="info-tabs-section">
+    <div class="info-tabs">
+      <button class="tab-button active" onclick="openTab(event, 'faqs')">FAQs</button>
+      <button class="tab-button" onclick="openTab(event, 'getting-started')">Getting Started</button>
+      <button class="tab-button" onclick="openTab(event, 'payments')">Payments</button>
+      <button class="tab-button" onclick="openTab(event, 'responsible-gaming')">Responsible Gaming</button>
+    </div>
+
+    <!-- FAQs TAB -->
+    <div id="faqs" class="tab-content active">
+      <h2 class="tab-title">Frequently Asked Questions</h2>
+      
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I claim my welcome bonus?
+        </button>
+        <div class="faq-answer">
+          Create your Ruby Wager account, make a qualifying first deposit of $50 or more, and your 200% welcome bonus will be automatically credited to your account. The bonus has a 10x rollover requirement on sports bets with odds of -200 or better. Visit our Promotions page for full terms and conditions.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What sports can I bet on at Ruby Wager?
+        </button>
+        <div class="faq-answer">
+          Ruby Wager offers betting on all major US and international sports including NFL, NBA, MLB, NHL, MLS, Premier League, La Liga, UEFA Champions League, UFC/MMA, boxing, golf, tennis, and more. We provide moneylines, spreads, totals, parlays, props, and live in-game betting across all markets.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How fast are payouts at Ruby Wager?
+        </button>
+        <div class="faq-answer">
+          Most approved payout requests are processed the same business day. Crypto withdrawals (Bitcoin, Ethereum, Litecoin) typically arrive within 24 hours. E-wallet and card payouts take 1-3 business days. All payouts require account verification before the first withdrawal.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What casino games are available?
+        </button>
+        <div class="faq-answer">
+          Our casino lobby features 200+ slots from top providers, live dealer blackjack and roulette (24/7), baccarat, video poker, and progressive jackpots. Live casino games are streamed in HD with professional dealers. New games are added monthly.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Is Ruby Wager legal and safe?
+        </button>
+        <div class="faq-answer">
+          Ruby Wager operates under a valid gaming license and uses industry-standard SSL encryption to protect your data. All financial transactions are processed through secure, verified payment partners. We follow strict KYC (Know Your Customer) and AML (Anti-Money Laundering) procedures to ensure platform integrity.
+        </div>
+      </div>
+    </div>
+
+    <!-- GETTING STARTED TAB -->
+    <div id="getting-started" class="tab-content">
+      <h2 class="tab-title">Getting Started with Ruby Wager</h2>
+      
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I sign up for an account?
+        </button>
+        <div class="faq-answer">
+          Click "Join Now" in the top navigation bar. You'll need to provide your full name, date of birth, email address, phone number, and create a secure password. You must be 18+ years old to create an account. Registration takes less than 2 minutes.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Why is my account on Read-Only status?
+        </button>
+        <div class="faq-answer">
+          All new accounts start on Read-Only mode until age and identity verification is complete. Please contact live chat support with a valid government-issued ID (driver's license, passport) to verify your account. Verification is typically completed within 1 hour during business hours.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What documents do I need for verification?
+        </button>
+        <div class="faq-answer">
+          You'll need one government-issued photo ID (driver's license, state ID, or passport) and proof of address (utility bill, bank statement, or government correspondence) dated within the last 3 months. Upload clear photos or scans through your account settings or send to our verification team via live chat.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can I have multiple accounts?
+        </button>
+        <div class="faq-answer">
+          No. Ruby Wager strictly enforces a one-account-per-person policy. Creating multiple accounts will result in permanent account closure and forfeiture of all balances. Each account is tied to your personal information and cannot be shared or transferred.
+        </div>
+      </div>
+    </div>
+
+    <!-- PAYMENTS TAB -->
+    <div id="payments" class="tab-content">
+      <h2 class="tab-title">Deposits & Withdrawals</h2>
+      
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What are the deposit options?
+        </button>
+        <div class="faq-answer">
+          Ruby Wager accepts Visa/Mastercard credit and debit cards, cryptocurrency (Bitcoin, Ethereum, Litecoin, USDT), e-wallets (Skrill, Neteller), and bank transfers. Minimum deposit is $20. Crypto deposits have no fees and are processed instantly. Card deposits may have a 4.9% processing fee depending on your card issuer.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I make a deposit or withdrawal?
+        </button>
+        <div class="faq-answer">
+          Log into your account and click "Cashier" or "Banking." For deposits, select your payment method, enter the amount, and follow the prompts. For withdrawals, choose your preferred payout method, enter the amount (minimum $50), and submit. First-time withdrawals require account verification before processing.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Are there withdrawal limits?
+        </button>
+        <div class="faq-answer">
+          Standard accounts have a $2,500 daily and $10,000 weekly withdrawal limit. VIP tier members enjoy higher limits: Gold ($5,000/$20,000), Platinum ($10,000/$40,000), and Diamond (unlimited). Limits reset every 24 hours for daily and every Monday for weekly maximums.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          When can I request a withdrawal?
+        </button>
+        <div class="faq-answer">
+          You can request a withdrawal any time after your account is verified and you've met any bonus wagering requirements. Withdrawals must be made using the same method as your deposit when possible, for security compliance. Withdrawals requested before 5 PM EST are typically processed the same business day.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you charge withdrawal fees?
+        </button>
+        <div class="faq-answer">
+          Ruby Wager does not charge internal withdrawal fees. However, your payment provider (bank, crypto network, e-wallet) may charge their own processing fees. We recommend using cryptocurrency for the fastest, fee-free transactions. Your first withdrawal each month via any method is completely fee-free on our end.
+        </div>
+      </div>
+    </div>
+
+    <!-- RESPONSIBLE GAMING TAB -->
+    <div id="responsible-gaming" class="tab-content">
+      <h2 class="tab-title">Responsible Gaming</h2>
+      
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I set deposit limits?
+        </button>
+        <div class="faq-answer">
+          Navigate to Account Settings > Responsible Gaming to set daily, weekly, or monthly deposit limits. Limits take effect immediately and can only be decreased instantly. Requests to increase limits have a 24-hour cooling-off period before activation. Contact support if you need assistance setting up limits.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can I self-exclude from Ruby Wager?
+        </button>
+        <div class="faq-answer">
+          Yes. We offer self-exclusion periods of 30 days, 3 months, 6 months, or permanent closure. Contact our support team via live chat or email to initiate self-exclusion. During this period, you will not be able to log in, deposit, or receive promotional communications. We take responsible gaming seriously.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What if I think I have a gambling problem?
+        </button>
+        <div class="faq-answer">
+          Ruby Wager partners with the National Council on Problem Gambling (NCPG). Call their 24/7 confidential helpline at 1-800-522-4700 or visit www.ncpgambling.org for resources. You can also contact organizations like Gamblers Anonymous at www.gamblersanonymous.org for support meetings and counseling.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you have tools to help me gamble responsibly?
+        </button>
+        <div class="faq-answer">
+          Yes. Ruby Wager provides deposit limits, loss limits, session time limits, reality checks (reminders of time spent gambling), and self-assessment tests. You can also request a temporary "cool-off" period of 24-72 hours where your account is temporarily suspended. All tools are available in your Account Settings under Responsible Gaming.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="mainFooter">
+    <p>&copy; 2025 Ruby Wager. All rights reserved.</p>
+    <div class="footer-meta">
+      <div class="footer-responsible">
+        <span>18+ Play Responsibly.</span>
+        <span>Gambling can be addictive – please bet within your limits.</span>
+      </div>
+      <div class="footer-payments">
+        <span class="footer-payments-label">Payments:</span>
+        <span class="footer-payment-chip">VISA</span>
+        <span class="footer-payment-chip">Mastercard</span>
+        <span class="footer-payment-chip">Skrill</span>
+        <span class="footer-payment-chip">Neteller</span>
+        <span class="footer-payment-chip">Bitcoin</span>
+        <span class="footer-payment-chip">Ethereum</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="footer-logo-section"></div>
+
+  <script>
+    // Hamburger menu toggle
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+
+    function closeMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.remove('active');
+      hamburger.classList.remove('active');
+    }
+
+    // Smooth scroll helper for CTAs
+    function scrollToSection(id) {
+      const target = document.getElementById(id);
+      if (!target) return;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Tab switching functionality
+    function openTab(evt, tabName) {
+      // Hide all tab contents
+      const tabContents = document.getElementsByClassName('tab-content');
+      for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove('active');
+      }
+      
+      // Remove active class from all tab buttons
+      const tabButtons = document.getElementsByClassName('tab-button');
+      for (let i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove('active');
+      }
+      
+      // Show the selected tab and mark button as active
+      document.getElementById(tabName).classList.add('active');
+      evt.currentTarget.classList.add('active');
+    }
+
+    // FAQ accordion toggle functionality
+    function toggleFaq(element) {
+      const answer = element.nextElementSibling;
+      const isActive = answer.classList.contains('active');
+      
+      // Close all other open FAQs in the same tab
+      const allAnswers = element.closest('.tab-content').getElementsByClassName('faq-answer');
+      const allQuestions = element.closest('.tab-content').getElementsByClassName('faq-question');
+      
+      for (let i = 0; i < allAnswers.length; i++) {
+        allAnswers[i].classList.remove('active');
+        allQuestions[i].classList.remove('active');
+      }
+      
+      // Toggle the clicked FAQ
+      if (!isActive) {
+        answer.classList.add('active');
+        element.classList.add('active');
+      }
+    }
+
+    // Generate random top winners list on each page load
+    (function generateTopWinners() {
+      const list = document.getElementById('topWinnersList');
+      if (!list) return;
+
+      const names = [
+        'A. Martinez', 'J. Thompson', 'L. Rivera', 'M. Johnson', 'K. Hernandez',
+        'S. Williams', 'D. Garcia', 'P. Brown', 'R. Silva', 'C. Wilson',
+        'E. Lopez', 'T. Anderson', 'G. Young', 'N. Clark', 'B. Perez'
+      ];
+
+      const games = [
+        'Live Blackjack', 'European Roulette', 'American Roulette',
+        'Mega Slots Jackpots', 'VIP Baccarat', 'High Roller Blackjack',
+        'Lightning Roulette', 'Ruby Slots', 'Crypto Crash', 'VIP Wheel Spin'
+      ];
+
+      function randomFrom(array) {
+        return array[Math.floor(Math.random() * array.length)];
+      }
+
+      function randomAmount() {
+        const base = Math.floor(Math.random() * (5000 - 250)) + 250; // 250 - 4999
+        // Round to nearest 5 or 10 for nicer numbers
+        const rounded = Math.round(base / 5) * 5;
+        return `$${rounded.toLocaleString()}`;
+      }
+
+      list.innerHTML = '';
+
+      for (let i = 0; i < 10; i++) {
+        const li = document.createElement('li');
+        li.className = 'winner-item';
+
+        const main = document.createElement('div');
+        main.className = 'winner-main';
+
+        const name = document.createElement('span');
+        name.className = 'winner-name';
+        name.textContent = randomFrom(names);
+
+        const game = document.createElement('span');
+        game.className = 'winner-game';
+        game.textContent = randomFrom(games);
+
+        const amount = document.createElement('span');
+        amount.className = 'winner-amount';
+        amount.textContent = randomAmount();
+
+        main.appendChild(name);
+        main.appendChild(game);
+        li.appendChild(main);
+        li.appendChild(amount);
+        list.appendChild(li);
+      }
+    })();
+  </script>
+
+</body>
+</html>
