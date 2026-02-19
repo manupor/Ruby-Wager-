@@ -425,7 +425,7 @@ a {
 /* Slider Dots */
 .hero-slider-dots {
   position: absolute;
-  bottom: 24px;
+  bottom: 2%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -844,6 +844,16 @@ a {
   padding: 2px 5px;
   border-radius: 6px;
   letter-spacing: 0.02em;
+}
+
+.better-bet-card-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .better-bet-text {
@@ -1462,6 +1472,17 @@ footer::before {
     height: 30px;
   }
 
+  .header-buttons {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .header-buttons .btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.7rem;
+    min-width: auto;
+  }
+
   /* Hero Mobile */
   .main-banner {
     margin-top: var(--header-height);
@@ -1486,8 +1507,10 @@ footer::before {
 
   .join-now-mobile {
     display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    bottom: 10%;
+    bottom: 3rem;
     left: 50%;
     transform: translateX(-50%);
     width: 85%;
@@ -1574,6 +1597,10 @@ footer::before {
 
   .footer-logo {
     height: 32px;
+  }
+
+  .payment-logo {
+    height: 16px;
   }
 
   /* Auth */
@@ -1786,12 +1813,18 @@ footer::before {
 .mobile-overlay-bonus {
   position: absolute;
   top: auto;
-  bottom: calc(22% + 10px);
+  bottom: 8.5rem;
   left: 50%;
   transform: translateX(-50%);
   width: 75%;
   height: auto;
   z-index: 2;
   pointer-events: none;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 30px rgba(0, 0, 0, 0.9));
+}
+
+.hero-slide:first-child .mobile-overlay-bonus {
+  width: 80%;
+  left: 48%;
+  bottom: 6.5rem;
 }
