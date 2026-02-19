@@ -1626,13 +1626,12 @@ footer::before {
    RESPONSIVE - SMALL MOBILE
    ============================================ */
 @media (max-width: 480px) {
-  .header-buttons .btn-outline {
-    display: none;
-  }
 
+  .header-buttons .btn-outline,
   .header-buttons .btn-primary {
-    padding: 0.5rem 1.2rem;
-    font-size: 0.75rem;
+    display: inline-flex;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.65rem;
   }
 
   .leagues-grid {
