@@ -8,22 +8,42 @@ Thumbs.db
 # Old/unused project versions
 /ruby-landing-v1/
 /ruby-landing-clean/
+/ruby-landing-final/
 
 # Temporary files
-ruby-landing-final/test.txt
-ruby-landing-final/copy_image.sh
+test.txt
+copy_image.sh
 
 # Root-level loose assets (not part of final site)
-/*.png
-/*.jpg
-/*.JPG
-/*.jpeg
-/*.svg
-/*.ttf
 /bebas_neue/
 /montserrat/
 /offers/
 /HERO/
-/index.html
+
+# Old loose images at root (not in images/ folder)
+/01.png
+/02.png
+/03.png
+/04.png
+/05.png
+/06.png
+/07.png
+/08.png
+/125.png
+/20.png
+/200.png
+/back.JPG
+/hero-bg.jpg
+/hero-new.png
+/hero-2.2.png
+/fondo.jpg
+/ruby12.png
+/player.png
+/player2.png
+/helmet.png
+/football.png
+/fighter-UFC.png
+
+# Old HTML at root
 /index-backup.html
 /index-new.html
