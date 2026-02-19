@@ -10,7 +10,10 @@
   <script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="mobile-web-app-capable" content="yes" />
-  <link rel="preload" href="images/sports-banner-desktopo.png" as="image" fetchpriority="high">
+  <link rel="preload" href="images/banner hero desktop.png" as="image" fetchpriority="high">
+  <link rel="preload" href="images/ruby mibile 1.png" as="image" fetchpriority="high" media="(max-width: 768px)">
+  <link rel="preload" href="images/text hero desktop.png" as="image" fetchpriority="high">
+  <link rel="preload" href="images/logo.png" as="image">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -113,7 +116,8 @@
         <!-- Slide 1: Original Ruby Hero (RUBY-HERO-2.png) -->
         <div class="hero-slide active">
           <div class="hero-desktop-container">
-            <img src="images/banner hero desktop.png" alt="Ruby Wager Casino" class="hero-background-img">
+            <img src="images/banner hero desktop.png" alt="Ruby Wager Casino" class="hero-background-img"
+              fetchpriority="high" decoding="async">
             <div class="hero-text-center">
               <img src="images/text hero desktop.png" alt="200% Sign Up Bonus — Same Day Payouts" class="hero-text-img">
             </div>
@@ -123,7 +127,8 @@
           </div>
           <div class="hero-mobile-container">
             <div class="mobile-hero-wrapper">
-              <img src="images/ruby mibile 1.png" alt="Ruby Wager Mobile" class="hero-mobile-img">
+              <img src="images/ruby mibile 1.png" alt="Ruby Wager Mobile" class="hero-mobile-img" fetchpriority="high"
+                decoding="async">
               <img src="images/text hero desktop.png" alt="Sign Up Bonus" class="mobile-overlay-bonus">
             </div>
             <div class="join-now-mobile">
@@ -135,7 +140,8 @@
         <!-- Slide 2: ruby-hero.png -->
         <div class="hero-slide">
           <div class="hero-desktop-container">
-            <img src="images/ruby-hero.png" alt="Ruby Wager" class="hero-background-img">
+            <img src="images/ruby-hero.png" alt="Ruby Wager" class="hero-background-img" loading="lazy"
+              decoding="async">
             <div class="hero-text-center">
               <img src="images/TEXT HERO 2.png" alt="Ruby Wager Promo" class="hero-text-img">
             </div>
@@ -145,7 +151,8 @@
           </div>
           <div class="hero-mobile-container">
             <div class="mobile-hero-wrapper">
-              <img src="images/MOBILE HERO 2.png" alt="Ruby Wager Mobile" class="hero-mobile-img">
+              <img src="images/MOBILE HERO 2.png" alt="Ruby Wager Mobile" class="hero-mobile-img" loading="lazy"
+                decoding="async">
               <img src="images/TEXT HERO 2.png" alt="Ruby Wager Promo" class="mobile-overlay-bonus">
             </div>
             <div class="join-now-mobile">
