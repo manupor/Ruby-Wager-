@@ -622,6 +622,7 @@ a {
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 30px rgba(69, 243, 127, 0.3);
+  animation: pulse-glow 2.5s ease-in-out infinite;
 }
 
 .btn-join-now-overlay::before {
@@ -1558,7 +1559,7 @@ footer::before {
 
   /* FAQ */
   .faq-section {
-    padding: 2rem 0.75rem;
+    padding: 1rem 0.75rem;
   }
 
   .faq-tabs {
