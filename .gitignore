@@ -1,0 +1,29 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Archives
+*.zip
+
+# Old/unused project versions
+/ruby-landing-v1/
+/ruby-landing-clean/
+
+# Temporary files
+ruby-landing-final/test.txt
+ruby-landing-final/copy_image.sh
+
+# Root-level loose assets (not part of final site)
+/*.png
+/*.jpg
+/*.JPG
+/*.jpeg
+/*.svg
+/*.ttf
+/bebas_neue/
+/montserrat/
+/offers/
+/HERO/
+/index.html
+/index-backup.html
+/index-new.html
